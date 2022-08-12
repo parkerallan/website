@@ -1,0 +1,301 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.graphic{
+  position: absolute; 
+  max-width: 30%; 
+  height: auto; 
+  width: auto\9;
+  bottom: 0px; 
+  right: 0px
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: 'Raleway', sans-serif; 
+}
+
+section {
+  background-color: whitesmoke;
+}
+
+.hero {
+  background-color: rgb(31, 30, 30);
+  height: 100vh;
+  color: whitesmoke;
+  font-size: 40px;
+}
+
+footer {
+  background-color: rgb(0, 0, 0);
+  border-top: #00AD89 solid 8px;
+  border-bottom: #00AD89 solid 6px;
+  color: whitesmoke;
+  text-align: center;
+  padding-top: 5px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+  width: 500px;
+  justify-content: space-around;
+  font-size: 32px;
+  margin-top: 30px;
+}
+
+li {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 90px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 50px;
+  margin: 40px 0px 30px 0px;
+}
+
+h3 {
+  font-size: 25px;
+  margin: 15px 0px 15px 0px;
+}
+
+hr {
+  margin: 8px 20px;
+}
+
+p {
+margin: 0;
+font-size: 30px;
+font-weight: 300;
+margin-bottom: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+svg {
+  padding-top: 10px;
+}
+
+.hero-area {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-text{
+  margin-left: 80px;
+  margin-bottom: 200px;
+}
+
+.button {
+  width: 200px;
+  height: 45px;
+  border-radius: 30px;
+  background-color: #00AD89;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 300;
+  padding-top: 5px;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background-color: #4dffbb;
+}
+
+.button:active{
+  background-color: #bfbfbf;
+  color: #666666;
+}
+
+.socials{
+  float: right;
+}
+
+.logo {
+  height: 80px;
+  margin: 30px;
+}
+
+.icon {
+  margin: 15px;
+}
+
+.subsection {
+  display: flex;
+  justify-content: space-around;
+  padding: 80px;
+}
+
+.subsection-alt {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 80px, 80px, 0px, 80px;
+}
+
+.headshot-section {
+  display: flex;
+  align-items: center;
+}
+
+.headshot {
+  width: 300px;
+  border-radius: 150px;
+  margin-left: 50px;
+  border: #00AD89 solid 4px;
+}
+
+.card {
+  height: 500px;
+  width: 300px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.project-container {
+  display: flex;
+  justify-content: space-around !important;
+  flex-wrap: wrap;
+}
+
+.project-image {
+  width: 250px;
+  height: 275px;
+  margin-top: 30px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.subtext {
+  font-size: 19px;
+  font-weight: 300;
+  margin: 5px;
+}
+
+.view-text {
+  text-decoration: none;
+  color: black;
+}
+
+.hamburger {
+  display: none;
+}
+
+.hamburger:focus{
+  outline: 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .hamburger {
+    display: block;
+    border: 0;
+    background-color: transparent;
+    color: whitesmoke;
+    font-size: 35px;
+    margin: 0px 40px 50px 0px;
+    align-self: flex-end;
+  }
+
+  ul {
+    display: none;
+  }
+
+  ul.show {
+    display: block;
+    margin-bottom: 50px;
+  }
+
+  li {
+    margin-left: 30px;
+  }
+
+  nav {
+    display: flex;
+  }
+
+  img.logo {
+  width: 80px;
+  }
+}
+
+/* ----------- iPhone 12, 12 Pro ----------- */
+
+/* 2532x1170 pixels at 460ppi */ 
+@media only screen 
+and (device-width: 390px) 
+and (device-height: 844px) 
+and (-webkit-device-pixel-ratio: 3) {
+  .hamburger {
+    display: block;
+    border: 0;
+    background-color: transparent;
+    color: whitesmoke;
+    font-size: 100px;
+    margin: 0px 40px 50px 0px;
+    align-self: flex-end;
+  }
+
+  ul {
+    display: none;
+  }
+
+  ul.show {
+    display: block;
+    margin-bottom: 50px;
+    font-size: 75px;
+  }
+
+  li {
+    margin-left: 30px;
+    padding: 10px;
+  }
+
+  nav {
+    display: flex;
+  }
+
+  img.logo {
+  width: 180px;
+  height: 180px;
+  }
+  h1{
+  font-size: 110px;
+  }
+  hero-text.p{
+    font-size: 70px;
+  }
+
+}
+
+.submit-button {
+	background-color:#00AD89;
+	border-radius:5px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Raleway;
+	font-size:15px;
+	padding:11px 20px;
+	text-decoration:none;
+  border: 0;
+}
