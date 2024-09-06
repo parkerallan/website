@@ -35,7 +35,7 @@
     <div class="hero-area">
       <div class="hero-text">
         <h1>Parker Allan</h1>
-        <p>Software Developer</p>
+        <p>Software Developer Engineer in Test</p>
         <a href="#about-me"><div class="button">About Me</div></a>
       </div>
         <img class="graphic" src="resources/images/graphic.png" alt="graphic">
@@ -44,18 +44,19 @@
   <section style="border-top: #00AD89 solid 8px;" id="about-me" class="subsection">
     <div>
       <h2>About Me</h2>
-        <p>Hello, I'm Parker Allan. I'm a Software Development student at Champlain College with a strong interest in all things tech.
+        <p>Hello, I'm Parker Allan. I'm a Software Development Major from Champlain College with a strong interest in all things tech.
           <br>
           <br>
-          I have been programming for 2+ years and I have professional experience working with Automation, AI and Web Development
+          I have been programming for 4+ years and I have professional experience working with QA Automation and Web Development. I'm interested in analytical insight and building better software.
           <br>
           <br>
-          Recently, I've been working on my embedded systems programming skills with a STM32F407VG Discovery board and hope to have some completed projects soon. Below I have some projects to check out. Also view my GitHub <a style="color: blue;" target=”_blank” href="https://github.com/parkerallan">here.</a></p>
+          Recently, I've been working on my Data Science skills. Below I have some projects to check out. Also view my GitHub <a style="color: blue;" target=”_blank” href="https://github.com/parkerallan">here.</a></p>
     </div>
     <div class="headshot-section">
       <img class="headshot" src="resources/images/pfp.jpeg" alt="headshot pic"/>
     </div>
   </section>
+  <!-- example new section and project card -->
   <!--<section id="projects" class="subsection-alt">
     <h2>AI/Embedded Projects</h2>
       <div class="project-container">
@@ -72,9 +73,54 @@
         </div>
       </div>
   </section>-->
+  <!-- active projects -->
   <section id="projects" class="subsection-alt">
     <h2>Projects</h2>
       <div class="project-container">
+        <div class="card">
+          <img class="project-image" src="resources/images/jetdefender.png" alt="assembly game">
+          <h3>Analytics Dashboard</h3>
+          <p class="subtext">R App
+            <br>
+          </p>
+          <hr />
+          <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/jet-defender" target="_blank">View
+              Here</a>
+          </p>
+        </div>
+        <div class="card">
+          <img class="project-image" src="resources/images/jetdefender.png" alt="assembly game">
+          <h3>Social Media App</h3>
+          <p class="subtext">Django App
+            <br>
+          </p>
+          <hr />
+          <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/jet-defender" target="_blank">View
+              Here</a>
+          </p>
+        </div>
+        <div class="card">
+          <img class="project-image" src="resources/images/jetdefender.png" alt="assembly game">
+          <h3>Jet Defender</h3>
+          <p class="subtext">SHMUP-style game where the player must shoot down incoming threats. Written in 6502 using the CA65 assembler
+            <br>
+          </p>
+          <hr />
+          <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/jet-defender" target="_blank">View
+              Here</a>
+          </p>
+        </div>
+        <div class="card">
+          <img class="project-image" src="resources/images/supermario.png" alt="gameboy C game">
+          <h3>Super Mario Clone</h3>
+          <p class="subtext">WIP recreation of the first Super Mario Bros. game for the Nintendo Gameboy. Uses C language and GBDK-2020 SDK.
+            <br>
+          </p>
+          <hr />
+          <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/SMB_gb" target="_blank">View
+              Here</a>
+          </p>
+        </div>
         <div class="card">
           <img class="project-image" src="resources/images/data.jpg" alt="data features and fire mask labels">
           <h3>Wildfire Predictions</h3>
@@ -86,48 +132,49 @@
               Here</a>
           </p>
         </div>
-        <div class="card">
-          <img class="project-image" src="resources/images/stocks.png" alt="slot machine game">
-          <h3>Tech Stock Tracker</h3>
-          <p class="subtext">Shows data charts/tables on top 5 tech stocks. Uses Streamlit, Y!Finance API, and Pandas
-            <br>
-          </p>
-          <hr />
-          <p class="subtext"><a class="view-text" href="https://tech-stock-app.herokuapp.com/" target="_blank">View
-              Here</a>
-          </p>
-        </div>
-        <div class="card">
-          <img class="project-image" src="resources/images/slots.png" alt="slot machine game">
-          <h3>Slot Machine iOS</h3>
-          <p class="subtext">Uses SwiftUI, spin using a 100 credits, try to get a matching row horizontal, vertical, or diagonal.
-            <br>
-          </p>
-          <hr />
-          <p class="subtext"><a class="view-text" href="https://youtu.be/NFpPXa1VtKc" target="_blank">Watch
-              Here</a>
-          </p>
-        </div>
-        <div class="card">
-          <img class="project-image" src="resources/images/rockpaperscissor.png" alt="chat app">
-          <h3>Rock Paper Scissors iOS</h3>
-            <p class="subtext">Uses SwiftUI. Play against a bot that randomizes it's roll. Uses the buttons to make your selection.</p>
-          <hr />
-          <p class="subtext"><a class="view-text" href="https://www.youtube.com/watch?v=JU8bOy6KEus" target="_blank">Watch
-              Here</a></p>
-        </div>
-        <div class="card">
-          <img class="project-image" src="resources/images/blog.png" alt="">
-          <h3>Ruby on Rails Blog</h3>
-          <p class="subtext">CRUD app. Uses stimulus reflex for websocket features and gems like Devise and
-            Optimism.</p>
-          <hr />
-          <p class="subtext"><a class="view-text" href="https://parkera-myblog-app.herokuapp.com/" target="_blank">View Here</a>
-          </p>
-        </div>
       </div>
+      <!-- hidden content -->
       <div id="content" style="display: none;">
         <div class="project-container">
+          <div class="card">
+            <img class="project-image" src="resources/images/stocks.png" alt="slot machine game">
+            <h3>Tech Stock Tracker</h3>
+            <p class="subtext">Shows data charts/tables on top 5 tech stocks. Uses Streamlit, Y!Finance API, and Pandas
+              <br>
+            </p>
+            <hr />
+            <p class="subtext"><a class="view-text" href="https://tech-stock-app.herokuapp.com/" target="_blank">View
+                Here</a>
+            </p>
+          </div>
+          <div class="card">
+            <img class="project-image" src="resources/images/slots.png" alt="slot machine game">
+            <h3>Slot Machine iOS</h3>
+            <p class="subtext">Uses SwiftUI, spin using a 100 credits, try to get a matching row horizontal, vertical, or diagonal.
+              <br>
+            </p>
+            <hr />
+            <p class="subtext"><a class="view-text" href="https://youtu.be/NFpPXa1VtKc" target="_blank">Watch
+                Here</a>
+            </p>
+          </div>
+          <div class="card">
+            <img class="project-image" src="resources/images/rockpaperscissor.png" alt="chat app">
+            <h3>Rock Paper Scissors iOS</h3>
+              <p class="subtext">Uses SwiftUI. Play against a bot that randomizes it's roll. Uses the buttons to make your selection.</p>
+            <hr />
+            <p class="subtext"><a class="view-text" href="https://www.youtube.com/watch?v=JU8bOy6KEus" target="_blank">Watch
+                Here</a></p>
+          </div>
+          <div class="card">
+            <img class="project-image" src="resources/images/blog.png" alt="">
+            <h3>Ruby on Rails Blog</h3>
+            <p class="subtext">CRUD app. Uses stimulus reflex for websocket features and gems like Devise and
+              Optimism.</p>
+            <hr />
+            <p class="subtext"><a class="view-text" href="https://parkera-myblog-app.herokuapp.com/" target="_blank">View Here</a>
+            </p>
+          </div>
           <div class="card">
             <img class="project-image" src="resources/images/chat.png" alt="chat app">
             <h3>Chatroom</h3>
@@ -208,10 +255,9 @@
           </a>
         </div>
         <div>
-          <a href="https://twitter.com/ParkerAllan6" target="_blank" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="50" height="50" viewBox="0 0 24 24">
-              <path
-                d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z" />
+          <a href="https://twitter.com/parkxrdev" target="_blank" class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+              <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
             </svg>
           </a>
         </div>
@@ -239,7 +285,7 @@
       </div>
     </div>
     <div>
-      <p style="float: right; color: whitesmoke; font-size: 20px; margin-top: 285px; margin-right: 20px;">2022 | Parkerdev</p>
+      <p style="float: right; color: whitesmoke; font-size: 20px; margin-top: 285px; margin-right: 20px;">2024 | Parkerdev</p>
     </div>
     <div style="margin: 29px 950px 0px 0px; opacity: 0;">
       <img src="resources/images/graphic-reverse.png" alt="graphic" width="500" height="300">
