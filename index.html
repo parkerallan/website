@@ -194,30 +194,33 @@
           </a>
         </div>
       </div>
-      <div style="margin-left: 75px;">
-        <form action="https://formsubmit.co/c5ed3c27086810a7d639f784e5920761" method="POST">
-          <ul style="display:inline-block;">
-            <li>
-              <input type="text" placeholder="Name" name="Name" required size="40">
-            </li>
-            <li style="margin-bottom: 18px;">
-              <input type="email" placeholder="Email" name="Email" required size="40">
-            </li>
-            <li>
-              <textarea name="comment" required rows="7" cols="50" placeholder="Add a comment"></textarea>
-            </li>
-            <li>
-              <button class="submit-button" type="submit">Submit</button>
-              <!-- <input type="hidden" name="_captcha" value="false"> -->
-              <input type="hidden" name="_next" value="http://www.parkerdev.net/inquiry-sent.html">
-              
-            </li>
-          </ul>
-        </form>
-      </div>
+      <form action="https://formsubmit.co/c5ed3c27086810a7d639f784e5920761" method="POST">
+        <div class="group">
+          <input type="text" name="Name" required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Name</label>
+        </div>
+        <div class="group">
+          <input type="text" name="Email" required>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Email</label>
+        </div>
+        <div class="group">
+          <textarea rows="5" name="comment" required></textarea>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+          <label>Message</label>
+        </div>
+        <div class="btn-box">
+          <button class="btn btn-submit" type="submit">Submit</button>
+          <input type="hidden" name="_next" value="http://www.parkerdev.net/inquiry-sent.html">
+        </div>
+      </form>
     </div>
     <div>
-      <p style="float: right; color: whitesmoke; font-size: 20px; margin-top: 285px; margin-right: 20px;">2025 | Parkerdev</p>
+      <p style="float: right; color: whitesmoke; font-size: 20px; margin-top: 270px; margin-right: 20px;">2025 | Parkerdev</p>
     </div>
     <div style="margin: 29px 950px 0px 0px; opacity: 0;">
       <img src="resources/images/graphic-reverse.png" alt="graphic" width="500" height="300">
