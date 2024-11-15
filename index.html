@@ -59,50 +59,54 @@
   <section id="projects" class="subsection-alt">
     <h2>Projects</h2>
       <div class="project-container">
-        <div class="card">
-          <img class="project-image" src="resources/images/echo.png" alt="social media app">
-          <h3>Project Echo</h3>
-          <p class="subtext">WIP Social media platform using Django. Create posts and interact with others.
-            <br>
-          </p>
-          <hr />
-          <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/SDEV-435-81" target="_blank">View
-              Here</a>
-          </p>
-        </div>
-        <div class="card">
-          <img class="project-image" src="resources/images/jetdefender.png" alt="assembly game">
-          <h3>Jet Defender</h3>
-          <p class="subtext">SHMUP-style game where the player must shoot down incoming threats. Written in 6502 using the CA65 assembler
-            <br>
-          </p>
-          <hr />
-          <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/jet-defender" target="_blank">View
-              Here</a>
-          </p>
-        </div>
-        <div class="card">
-          <img class="project-image" src="resources/images/supermario.png" alt="gameboy C game">
-          <h3>Super Mario Clone</h3>
-          <p class="subtext">WIP recreation of the first Super Mario Bros. game for the Nintendo Gameboy. Uses C and GBDK.
-            <br>
-          </p>
-          <hr />
-          <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/SMB_gb" target="_blank">View
-              Here</a>
-          </p>
-        </div>
-        <div class="card">
-          <img class="project-image" src="resources/images/data.jpg" alt="data features and fire mask labels">
-          <h3>Wildfire Predictions</h3>
-          <p class="subtext">Predicting wildfire growth using autoencoder deep learning models. Shoutout Team Deep Green
-            <br>
-          </p>
-          <hr />
-          <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/FutureMakers-2022-Team-Deep-Green" target="_blank">View
-              Here</a>
-          </p>
-        </div>
+        <div id="projects-container" class="project-container">
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const projects = [
+                    {
+                        imgSrc: "resources/images/echo.png",
+                        title: "Project Echo",
+                        description: "Social media platform using Django. Create posts and interact with others.",
+                        link: "https://github.com/parkerallan/SDEV-435-81"
+                    },
+                    {
+                        imgSrc: "resources/images/jetdefender.png",
+                        title: "Jet Defender",
+                        description: "SHMUP-style game where the player must shoot down incoming threats. Written in 6502 using the CA65 assembler.",
+                        link: "https://github.com/parkerallan/jet-defender"
+                    },
+                    {
+                        imgSrc: "resources/images/supermario.png",
+                        title: "Super Mario Clone",
+                        description: "WIP recreation of the first Super Mario Bros. game for the Nintendo Gameboy. Uses C and GBDK.",
+                        link: "https://github.com/parkerallan/SMB_gb"
+                    },
+                    {
+                        imgSrc: "resources/images/data.jpg",
+                        title: "Wildfire Predictions",
+                        description: "Predicting wildfire growth using autoencoder deep learning models. Shoutout Team Deep Green",
+                        link: "https://github.com/parkerallan/FutureMakers-2022-Team-Deep-Green"
+                    },
+                ];
+  
+                // Reference to the container
+                const container = document.getElementById("projects-container");
+  
+                // Generate cards
+                projects.forEach(project => {
+                    const card = document.createElement("div");
+                    card.className = "card";
+                    card.innerHTML = `
+                        <img class="project-image" src="${project.imgSrc}" alt="${project.title}">
+                        <h3>${project.title}</h3>
+                        <p class="subtext">${project.description}</p>
+                        <hr />
+                        <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here</a></p>
+                    `;
+                    container.appendChild(card);
+                });
+            });
+          </script>
       </div>
       <!-- hidden content -->
       <div id="content" style="display: none;">
