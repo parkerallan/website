@@ -50,7 +50,7 @@
           I have been programming for 4+ years and I have professional experience working with QA Automation and Web Development. I'm interested in analytical insight and building better software.
           <br>
           <br>
-          Recently, I've been working on my Data Science skills. Below I have some projects to check out. Also view my GitHub <a style="color: blue;" target=”_blank” href="https://github.com/parkerallan">here.</a></p>
+          Recently, I've been working on my development skills. Below I have some projects to check out. Also view my GitHub <a style="color: blue;" target=”_blank” href="https://github.com/parkerallan">here.</a></p>
     </div>
     <div class="headshot-section">
       <img class="headshot" src="resources/images/pfp.jpeg" alt="headshot pic"/>
@@ -58,86 +58,15 @@
   </section>
   <section id="projects" class="subsection-alt">
     <h2>Projects</h2>
-      <div class="project-container">
-        <div id="projects-container" class="project-container">
-          <script>
-            document.addEventListener("DOMContentLoaded", () => {
-                const projects = [
-                    {
-                        imgSrc: "resources/images/echo.png",
-                        title: "Project Echo",
-                        description: "Social media platform using Django. Create posts and interact with others.",
-                        link: "https://github.com/parkerallan/SDEV-435-81"
-                    },
-                    {
-                        imgSrc: "resources/images/jetdefender.png",
-                        title: "Jet Defender",
-                        description: "SHMUP-style game where the player must shoot down incoming threats. Written in 6502 using the CA65 assembler.",
-                        link: "https://github.com/parkerallan/jet-defender"
-                    },
-                    {
-                        imgSrc: "resources/images/supermario.png",
-                        title: "Super Mario Clone",
-                        description: "WIP recreation of the first Super Mario Bros. game for the Nintendo Gameboy. Uses C and GBDK.",
-                        link: "https://github.com/parkerallan/SMB_gb"
-                    },
-                    {
-                        imgSrc: "resources/images/data.jpg",
-                        title: "Wildfire Predictions",
-                        description: "Predicting wildfire growth using autoencoder deep learning models. Shoutout Team Deep Green",
-                        link: "https://github.com/parkerallan/FutureMakers-2022-Team-Deep-Green"
-                    },
-                ];
-  
-                // Reference to the container
-                const container = document.getElementById("projects-container");
-  
-                // Generate cards
-                projects.forEach(project => {
-                    const card = document.createElement("div");
-                    card.className = "card";
-                    card.innerHTML = `
-                        <img class="project-image" src="${project.imgSrc}" alt="${project.title}">
-                        <h3>${project.title}</h3>
-                        <p class="subtext">${project.description}</p>
-                        <hr />
-                        <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here</a></p>
-                    `;
-                    container.appendChild(card);
-                });
-            });
-          </script>
-      </div>
-      <!-- hidden content -->
-      <div id="content" style="display: none;">
-        <div class="project-container">
-          <div class="card">
-            <img class="project-image" src="resources/images/stocks.png" alt="slot machine game">
-            <h3>Tech Stock Tracker</h3>
-            <p class="subtext">Shows data charts/tables on top 5 tech stocks. Uses Streamlit, Y!Finance API, and Pandas
-              <br>
-            </p>
-            <hr />
-            <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/tech-stock-app/" target="_blank">View
-                Here</a>
-            </p>
-          </div>
-          <div class="card">
-            <img class="project-image" src="resources/images/blog.png" alt="">
-            <h3>Ruby on Rails Blog</h3>
-            <p class="subtext">CRUD app. Uses stimulus reflex for websocket features and gems like Devise and
-              Optimism.</p>
-            <hr />
-            <p class="subtext"><a class="view-text" href="https://github.com/parkerallan/ror-blog-app/" target="_blank">View Here</a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div>
-        <h4 style='color: rgb(47, 49, 49); cursor: pointer; margin-bottom: 30px;' id="viewBtn" onclick="viewMore()">View Older Projects <i
-            class="fas fa-arrow-circle-down"></i>
-        </h4>
-      </div>
+    <div id="projects-container" class="project-container"></div>
+    <div id="content" style="display: none;">
+      <div id="hidden-content" class="project-container"></div>
+    </div>
+    <div>
+      <h4 style='color: rgb(47, 49, 49); cursor: pointer; margin-bottom: 30px;' id="viewBtn" onclick="viewMore()">View Older Projects <i
+        class="fas fa-arrow-circle-down"></i>
+      </h4>
+    </div>
   </section>
   <script src="resources/app.js"></script>
   </body>
