@@ -9,7 +9,58 @@ hamburgerButton.addEventListener('click', toggleButton)
 
 document.addEventListener("DOMContentLoaded", () => {
   populateProjects(); // Call populateProjects once DOM is loaded
+  populateBlog(); // Call populateBlog once DOM is loaded
+  initFloatingArrow(); // Initialize floating arrow navigation
 });
+
+// Floating Arrow Navigation
+function initFloatingArrow() {
+  const floatingArrow = document.getElementById('floating-arrow');
+  const arrowIcon = floatingArrow.querySelector('i');
+  const sections = ['about-me', 'projects', 'blog', 'contact'];
+  let currentSectionIndex = 0;
+
+  function updateArrowDirection() {
+    if (currentSectionIndex >= sections.length) {
+      arrowIcon.className = 'fas fa-chevron-up';
+    } else {
+      arrowIcon.className = 'fas fa-chevron-down';
+    }
+  }
+
+  floatingArrow.addEventListener('click', () => {
+    if (currentSectionIndex < sections.length) {
+      // Moving down through sections
+      const targetSection = document.getElementById(sections[currentSectionIndex]);
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+      currentSectionIndex++;
+      updateArrowDirection();
+    } else {
+      // At the end, go back to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      currentSectionIndex = 0;
+      updateArrowDirection();
+    }
+  });
+
+  // Show/hide arrow based on scroll position
+  window.addEventListener('scroll', () => {
+    const heroSection = document.querySelector('.hero');
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    const scrollTop = window.pageYOffset;
+    
+    if (scrollTop >= heroBottom - 100) {
+      // Reset when scrolling back up manually
+      if (scrollTop < 100 && currentSectionIndex >= sections.length) {
+        currentSectionIndex = 0;
+        updateArrowDirection();
+      }
+    }
+  });
+
+  // Initialize arrow direction
+  updateArrowDirection();
+}
 
 function populateProjects(){
   const projects = [
@@ -81,14 +132,99 @@ function populateProjects(){
   hiddenContent.innerHTML = hiddenProjects.map(createCard).join("");
 }
 
+function populateBlog() {
+  const blogArticles = [
+    {
+      icon: "fas fa-code",
+      title: "Building Modern Web Applications",
+      excerpt: "Exploring the latest frameworks and best practices for creating scalable web applications...",
+      date: "Dec 15, 2024",
+      link: "#"
+    },
+    {
+      icon: "fas fa-bug",
+      title: "Advanced Testing Strategies",
+      excerpt: "Deep dive into automation testing, TDD, and quality assurance methodologies...",
+      date: "Nov 28, 2024",
+      link: "#"
+    },
+    {
+      icon: "fas fa-database",
+      title: "Database Optimization Techniques",
+      excerpt: "Performance tuning and optimization strategies for modern database systems...",
+      date: "Nov 10, 2024",
+      link: "#"
+    },
+    {
+      icon: "fas fa-rocket",
+      title: "DevOps and CI/CD Pipelines",
+      excerpt: "Setting up efficient deployment workflows and continuous integration practices...",
+      date: "Oct 22, 2024",
+      link: "#"
+    },
+    {
+      icon: "fas fa-shield-alt",
+      title: "Web Security Best Practices",
+      excerpt: "Essential security measures and vulnerability prevention for web applications...",
+      date: "Oct 5, 2024",
+      link: "#"
+    },
+    {
+      icon: "fas fa-mobile-alt",
+      title: "Responsive Design Principles",
+      excerpt: "Creating adaptive user interfaces that work seamlessly across all devices...",
+      date: "Sep 18, 2024",
+      link: "#"
+    }
+  ];
+
+  const createBlogCard = (article) => `
+    <article class="blog-item">
+      <div class="blog-icon">
+        <i class="${article.icon}"></i>
+      </div>
+      <div class="blog-content">
+        <h3>${article.title}</h3>
+        <p class="blog-excerpt">${article.excerpt}</p>
+        <div class="blog-meta">
+          <span class="blog-date">${article.date}</span>
+          <a href="${article.link}" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+  `;
+
+  // Populate blog container
+  const blogContainer = document.getElementById("blog-list");
+  blogContainer.innerHTML = blogArticles.map(createBlogCard).join("");
+}
+
 function viewMore() {
   const btn = document.getElementById("viewBtn")
   const moreProjects = document.getElementById("content");
   if (moreProjects.style.display === "none") {
     moreProjects.style.display = "inline";
     btn.innerHTML = "View Less   <i class='fas fa-arrow-circle-up'></i>";
+    
+    // Scroll down slightly to show the additional projects
+    setTimeout(() => {
+      const hiddenContent = document.getElementById("hidden-content");
+      hiddenContent.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }, 100); // Small delay to allow content to render
   } else {
     moreProjects.style.display = "none";
     btn.innerHTML = "View Older Projects   <i class='fas fa-arrow-circle-down'></i>";
+    
+    // Scroll back up to the main projects section
+    setTimeout(() => {
+      const projectsSection = document.getElementById("projects");
+      projectsSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }, 100);
   }
 }
