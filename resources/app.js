@@ -14,15 +14,21 @@ document.addEventListener("DOMContentLoaded", () => {
 function populateProjects(){
   const projects = [
     {
+        imgSrc: "resources/images/albums.png",
+        title: "My Music",
+        description: "House and Trance music I've created for my upcoming Unity 3D action game. (Vol. 2 soon!)",
+        link: "https://youtube.com/playlist?list=PLbIqer7yaFcPsQwOmXr_i0f4ITx2gcwjx&feature=shared"
+    },
+    {
         imgSrc: "resources/images/echo.png",
-        title: "Project Echo",
+        title: "'Echo'",
         description: "Social media platform using Django. Create posts and interact with others.",
-        link: "https://github.com/parkerallan/SDEV-435-81"
+        link: "https://github.com/parkerallan/echo"
     },
     {
         imgSrc: "resources/images/jetdefender.png",
         title: "Jet Defender",
-        description: "SHMUP-style game where the player must shoot down incoming threats. Written in 6502 using the CA65 assembler.",
+        description: "SHMUP-style game where the player must shoot down incoming threats. 6502 ASM using the CA65 assembler.",
         link: "https://github.com/parkerallan/jet-defender"
     },
     {
@@ -49,9 +55,9 @@ function populateProjects(){
     },
     {
       imgSrc: "resources/images/blog.png",
-      title: "Ruby on Rails Blog",
+      title: "Blog POC",
       description:
-        "CRUD app. Uses stimulus reflex for websocket features and gems like Devise and Optimism.",
+        "Ruby on Rails CRUD app. Uses stimulus reflex for websocket features and gems like Devise and Optimism.",
       link: "https://github.com/parkerallan/ror-blog-app/",
     },
   ];
@@ -62,7 +68,7 @@ function populateProjects(){
       <h3>${project.title}</h3>
       <p class="subtext">${project.description}</p>
       <hr />
-      <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here</a></p>
+      <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here <i class="fas fa-external-link-alt"></i></a></p>
     </div>
   `;
 
