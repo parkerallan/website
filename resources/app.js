@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function initFloatingArrow() {
   const floatingArrow = document.getElementById('floating-arrow');
   const arrowIcon = floatingArrow.querySelector('i');
-  const sections = ['about-me', 'projects', 'blog', 'contact'];
+  const sections = ['projects', 'blog', 'about-me', 'contact'];
   let currentSectionIndex = 0;
 
   function updateArrowDirection() {
@@ -135,46 +135,11 @@ function populateProjects(){
 function populateBlog() {
   const blogArticles = [
     {
-      icon: "fas fa-code",
-      title: "Building Modern Web Applications",
-      excerpt: "Exploring the latest frameworks and best practices for creating scalable web applications...",
-      date: "Dec 15, 2024",
-      link: "#"
-    },
-    {
-      icon: "fas fa-bug",
-      title: "Advanced Testing Strategies",
-      excerpt: "Deep dive into automation testing, TDD, and quality assurance methodologies...",
-      date: "Nov 28, 2024",
-      link: "#"
-    },
-    {
-      icon: "fas fa-database",
-      title: "Database Optimization Techniques",
-      excerpt: "Performance tuning and optimization strategies for modern database systems...",
-      date: "Nov 10, 2024",
-      link: "#"
-    },
-    {
       icon: "fas fa-rocket",
-      title: "DevOps and CI/CD Pipelines",
-      excerpt: "Setting up efficient deployment workflows and continuous integration practices...",
-      date: "Oct 22, 2024",
-      link: "#"
-    },
-    {
-      icon: "fas fa-shield-alt",
-      title: "Web Security Best Practices",
-      excerpt: "Essential security measures and vulnerability prevention for web applications...",
-      date: "Oct 5, 2024",
-      link: "#"
-    },
-    {
-      icon: "fas fa-mobile-alt",
-      title: "Responsive Design Principles",
-      excerpt: "Creating adaptive user interfaces that work seamlessly across all devices...",
-      date: "Sep 18, 2024",
-      link: "#"
+      title: "Blog is Now Live!",
+      excerpt: "This is where I plan to share insights into my projects and more.",
+      date: "July 4th, 2025",
+      link: "/blog/blog-is-live/"
     }
   ];
 
