@@ -9,20 +9,77 @@ hamburgerButton.addEventListener('click', toggleButton)
 
 document.addEventListener("DOMContentLoaded", () => {
   populateProjects(); // Call populateProjects once DOM is loaded
+  populateBlog(); // Call populateBlog once DOM is loaded
+  initFloatingArrow(); // Initialize floating arrow navigation
 });
+
+// Floating Arrow Navigation
+function initFloatingArrow() {
+  const floatingArrow = document.getElementById('floating-arrow');
+  const arrowIcon = floatingArrow.querySelector('i');
+  const sections = ['projects', 'blog', 'about-me', 'contact'];
+  let currentSectionIndex = 0;
+
+  function updateArrowDirection() {
+    if (currentSectionIndex >= sections.length) {
+      arrowIcon.className = 'fas fa-chevron-up';
+    } else {
+      arrowIcon.className = 'fas fa-chevron-down';
+    }
+  }
+
+  floatingArrow.addEventListener('click', () => {
+    if (currentSectionIndex < sections.length) {
+      // Moving down through sections
+      const targetSection = document.getElementById(sections[currentSectionIndex]);
+      targetSection.scrollIntoView({ behavior: 'smooth' });
+      currentSectionIndex++;
+      updateArrowDirection();
+    } else {
+      // At the end, go back to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      currentSectionIndex = 0;
+      updateArrowDirection();
+    }
+  });
+
+  // Show/hide arrow based on scroll position
+  window.addEventListener('scroll', () => {
+    const heroSection = document.querySelector('.hero');
+    const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    const scrollTop = window.pageYOffset;
+    
+    if (scrollTop >= heroBottom - 100) {
+      // Reset when scrolling back up manually
+      if (scrollTop < 100 && currentSectionIndex >= sections.length) {
+        currentSectionIndex = 0;
+        updateArrowDirection();
+      }
+    }
+  });
+
+  // Initialize arrow direction
+  updateArrowDirection();
+}
 
 function populateProjects(){
   const projects = [
     {
+        imgSrc: "resources/images/albums.png",
+        title: "My Music",
+        description: "House and Trance music I've created for my upcoming Unity 3D action game. (Vol. 2 soon!)",
+        link: "https://youtube.com/playlist?list=PLbIqer7yaFcPsQwOmXr_i0f4ITx2gcwjx&feature=shared"
+    },
+    {
         imgSrc: "resources/images/echo.png",
-        title: "Project Echo",
+        title: "'Echo'",
         description: "Social media platform using Django. Create posts and interact with others.",
-        link: "https://github.com/parkerallan/SDEV-435-81"
+        link: "https://github.com/parkerallan/echo"
     },
     {
         imgSrc: "resources/images/jetdefender.png",
         title: "Jet Defender",
-        description: "SHMUP-style game where the player must shoot down incoming threats. Written in 6502 using the CA65 assembler.",
+        description: "SHMUP-style game where the player must shoot down incoming threats. 6502 ASM using the CA65 assembler.",
         link: "https://github.com/parkerallan/jet-defender"
     },
     {
@@ -49,9 +106,9 @@ function populateProjects(){
     },
     {
       imgSrc: "resources/images/blog.png",
-      title: "Ruby on Rails Blog",
+      title: "Blog POC",
       description:
-        "CRUD app. Uses stimulus reflex for websocket features and gems like Devise and Optimism.",
+        "Ruby on Rails CRUD app. Uses stimulus reflex for websocket features and gems like Devise and Optimism.",
       link: "https://github.com/parkerallan/ror-blog-app/",
     },
   ];
@@ -62,7 +119,7 @@ function populateProjects(){
       <h3>${project.title}</h3>
       <p class="subtext">${project.description}</p>
       <hr />
-      <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here</a></p>
+      <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here <i class="fas fa-external-link-alt"></i></a></p>
     </div>
   `;
 
@@ -75,14 +132,64 @@ function populateProjects(){
   hiddenContent.innerHTML = hiddenProjects.map(createCard).join("");
 }
 
+function populateBlog() {
+  const blogArticles = [
+    {
+      icon: "fas fa-rocket",
+      title: "Blog is Now Live!",
+      excerpt: "This is where I plan to share insights into my projects and more.",
+      date: "July 4th, 2025",
+      link: "/blog/blog-is-live/"
+    }
+  ];
+
+  const createBlogCard = (article) => `
+    <article class="blog-item">
+      <div class="blog-icon">
+        <i class="${article.icon}"></i>
+      </div>
+      <div class="blog-content">
+        <h3>${article.title}</h3>
+        <p class="blog-excerpt">${article.excerpt}</p>
+        <div class="blog-meta">
+          <span class="blog-date">${article.date}</span>
+          <a href="${article.link}" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </article>
+  `;
+
+  // Populate blog container
+  const blogContainer = document.getElementById("blog-list");
+  blogContainer.innerHTML = blogArticles.map(createBlogCard).join("");
+}
+
 function viewMore() {
   const btn = document.getElementById("viewBtn")
   const moreProjects = document.getElementById("content");
   if (moreProjects.style.display === "none") {
     moreProjects.style.display = "inline";
     btn.innerHTML = "View Less   <i class='fas fa-arrow-circle-up'></i>";
+    
+    // Scroll down slightly to show the additional projects
+    setTimeout(() => {
+      const hiddenContent = document.getElementById("hidden-content");
+      hiddenContent.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }, 100); // Small delay to allow content to render
   } else {
     moreProjects.style.display = "none";
     btn.innerHTML = "View Older Projects   <i class='fas fa-arrow-circle-down'></i>";
+    
+    // Scroll back up to the main projects section
+    setTimeout(() => {
+      const projectsSection = document.getElementById("projects");
+      projectsSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+      });
+    }, 100);
   }
 }

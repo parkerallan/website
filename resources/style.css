@@ -3,13 +3,13 @@
   padding: 0;
 }
 
-.graphic{
+.graphic {
   position: absolute; 
-  max-width: 30%; 
-  height: auto; 
-  width: auto\9;
-  bottom: 0px; 
-  right: 0px
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  z-index: 1;
 }
 
 html {
@@ -17,11 +17,23 @@ html {
 }
 
 body{
-  font-family: 'Raleway', sans-serif; 
+  font-family: 'Anta', sans-serif;
+  font-weight: 400;
 }
 
-section {
-  background-color: whitesmoke;
+section#about-me {
+  background: linear-gradient(135deg, #2c2c2c 0%, #4a4a4a 100%);
+  border-top: 2px solid #555555;
+}
+
+section#projects {
+  background: linear-gradient(135deg, #1a1a1a 0%, #3d3d3d 100%);
+  border-top: 2px solid #555555;
+}
+
+section#blog {
+  background: linear-gradient(135deg, #333333 0%, #555555 100%);
+  border-top: 2px solid #555555;
 }
 
 .hero {
@@ -29,20 +41,29 @@ section {
   height: 100vh;
   color: whitesmoke;
   font-size: 40px;
+  position: relative;
 }
 
 footer {
   background-color: rgb(0, 0, 0);
-  border-top: #00AD89 solid 8px;
-  border-bottom: #00AD89 solid 6px;
+  border-top: 2px solid #555555;
   color: whitesmoke;
   text-align: center;
-  padding-top: 5px;
+  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 2;
 }
 
 ul {
@@ -65,12 +86,19 @@ h1 {
 
 h2 {
   font-size: 50px;
-  margin: 40px 0px 30px 0px;
+  margin: 20px 0px 15px 0px;
 }
 
 h3 {
+  font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'SF Mono', monospace;
+  font-weight: 100;
   font-size: 25px;
   margin: 15px 0px 15px 0px;
+}
+
+h4 {
+  font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'SF Mono', monospace;
+  font-weight: 600;
 }
 
 hr {
@@ -79,9 +107,10 @@ hr {
 
 p {
 margin: 0;
-font-size: 30px;
-font-weight: 300;
+font-size: 25px;
+font-weight: 100;
 margin-bottom: 15px;
+font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'SF Mono', monospace;
 }
 
 a {
@@ -98,41 +127,34 @@ svg {
   height: 100%;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .hero-text{
   margin-left: 80px;
-  margin-bottom: 200px;
+  transform: translateY(-250px);
+  position: relative;
+  z-index: 3;
 }
 
-.button {
-  width: 200px;
-  height: 45px;
-  border-radius: 30px;
-  background-color: #00AD89;
-  text-align: center;
-  font-size: 30px;
-  font-weight: 300;
-  padding-top: 5px;
-  margin-top: 20px;
+.hero-text h1 {
+  position: relative;
+  z-index: 3;
 }
 
-.button:hover {
-  background-color: #4dffbb;
-}
-
-.button:active{
-  background-color: #bfbfbf;
-  color: #666666;
+.hero-text p {
+  position: relative;
+  z-index: 3;
 }
 
 .socials{
-  float: right;
-}
-
-.logo {
-  height: 80px;
-  margin: 30px;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
 }
 
 .icon {
@@ -143,13 +165,17 @@ svg {
   display: flex;
   justify-content: space-around;
   padding: 80px;
+  min-height: 100vh;
+  align-items: center;
 }
 
 .subsection-alt {
   display: flex;
   flex-direction: column;
   text-align: center;
-  padding: 80px, 80px, 0px, 80px;
+  padding: 80px;
+  min-height: 100vh;
+  justify-content: center;
 }
 
 .headshot-section {
@@ -159,9 +185,27 @@ svg {
 
 .headshot {
   width: 300px;
-  border-radius: 150px;
+  height: 300px;
   margin-left: 50px;
-  border: #00AD89 solid 4px;
+  position: relative;
+  filter: brightness(1.05) contrast(1.1);
+  clip-path: polygon(20% 0%, 100% 0%, 100% 80%, 80% 100%, 0% 100%, 0% 20%);
+  object-fit: cover;
+  border: 4px solid transparent;
+  background: linear-gradient(#2c2c2c, #2c2c2c) padding-box,
+              linear-gradient(45deg, #00AD89, #4dffbb, #00AD89) border-box;
+}
+
+.headshot-section::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 44px;
+  width: 312px;
+  height: 312px;
+  background: linear-gradient(45deg, #00AD89, #4dffbb, #00ffff, #00AD89);
+  clip-path: polygon(20% 0%, 100% 0%, 100% 80%, 80% 100%, 0% 100%, 0% 20%);
+  z-index: -1;
 }
 
 .card {
@@ -171,13 +215,28 @@ svg {
   margin-right: 5px;
   margin-left: 5px;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  background: rgba(40, 40, 40, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  border-left: 4px solid #00AD89;
+}
+
+.card h3 {
+  color: #ffffff;
+  margin: 15px 18px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: rgba(50, 50, 50, 1);
 }
 
 .project-container {
   display: flex;
   justify-content: space-around !important;
   flex-wrap: wrap;
+  margin-top: 40px;
 }
 
 .project-image {
@@ -189,15 +248,95 @@ svg {
 }
 
 .subtext {
-  font-size: 19px;
-  font-weight: 300;
-  margin: 5px;
-  line-height: 1.5;
+  font-size: 14px;
+  font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'SF Mono', monospace;
+  font-weight: 400;
+  margin: 18px;
+  line-height: 1.4;
+  color: #d0d0d0;
+  text-align: left;
 }
 
 .view-text {
   text-decoration: none;
-  color: black;
+  color: #00AD89;
+  transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  display: inline-block;
+}
+
+.view-text:hover {
+  background-color: rgba(0, 173, 137, 0.1);
+  color: #4dffbb;
+}
+
+.view-text:active {
+  background-color: rgba(0, 173, 137, 0.2);
+  color: #4dffbb !important;
+}
+
+.card .subtext:last-child {
+  text-align: center;
+}
+
+.floating-arrow {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #00AD89;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 173, 137, 0.3);
+}
+
+.floating-arrow:hover {
+  background-color: #4dffbb;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 173, 137, 0.4);
+}
+
+.floating-arrow:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 173, 137, 0.3);
+}
+
+.floating-arrow i {
+  color: white;
+  font-size: 24px;
+  transition: transform 0.3s ease;
+}
+
+.floating-arrow.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.view-older-btn {
+  transition: all 0.3s ease;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: transparent;
+  display: inline-block;
+  color: #e0e0e0 !important;
+}
+
+.view-older-btn:hover {
+  background-color: rgba(224, 224, 224, 0.1);
+  color: #ffffff !important;
+}
+
+.view-older-btn:active {
+  background-color: rgba(224, 224, 224, 0.2);
+  color: #ffffff !important;
 }
 
 .hamburger {
@@ -234,10 +373,6 @@ svg {
 
   nav {
     display: flex;
-  }
-
-  img.logo {
-  width: 80px;
   }
 }
 
@@ -277,10 +412,6 @@ and (-webkit-device-pixel-ratio: 3) {
     display: flex;
   }
 
-  img.logo {
-  width: 180px;
-  height: 180px;
-  }
   h1{
   font-size: 110px;
   }
@@ -296,7 +427,7 @@ and (-webkit-device-pixel-ratio: 3) {
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
-	font-family:Raleway;
+	font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'SF Mono', monospace;
 	font-size:15px;
 	padding:11px 20px;
 	text-decoration:none;
@@ -316,8 +447,9 @@ body {
 
 /* FORM */
 form {
-  width: 320px;
-  margin: 45px auto;
+  width: 100%;
+  max-width: 450px;
+  margin: 20px auto;
 }
 
 form h1 {
@@ -348,7 +480,7 @@ form .emoji {
 
 .group {
   position: relative;
-  margin: 45px 0;
+  margin: 25px 0;
 }
 
 /* INPUTS */
@@ -360,10 +492,10 @@ input,
 textarea {
   background: none;
   color: #d4d4d4;
-  font-size: 18px;
-  padding: 10px 10px 10px 5px;
+  font-size: 20px;
+  padding: 15px 15px 15px 8px;
   display: block;
-  width: 320px;
+  width: 100%;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid #d4d4d4;
@@ -385,7 +517,7 @@ textarea:valid ~ label {
 
 input:focus ~ .bar:before,
 textarea:focus ~ .bar:before {
-  width: 320px;
+  width: 100%;
 }
 
 input[type="password"] {
@@ -406,7 +538,7 @@ label {
 .bar {
   position: relative;
   display: block;
-  width: 320px;
+  width: 100%;
 }
 
 .bar:before {
@@ -472,4 +604,305 @@ label {
 .btn-box {
   text-align: center;
   margin: 50px 0;
+}
+
+.contact-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* BLOG SECTION */
+.blog-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 30px auto 0;
+}
+
+.blog-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #00AD89 #404040;
+}
+
+.blog-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.blog-list::-webkit-scrollbar-track {
+  background: #404040;
+  border-radius: 4px;
+}
+
+.blog-list::-webkit-scrollbar-thumb {
+  background: #00AD89;
+  border-radius: 4px;
+}
+
+.blog-list::-webkit-scrollbar-thumb:hover {
+  background: #4dffbb;
+}
+
+.blog-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 25px;
+  margin-bottom: 20px;
+  background: rgba(40, 40, 40, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  border-left: 4px solid #00AD89;
+}
+
+.blog-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: rgba(50, 50, 50, 1);
+}
+
+.blog-icon {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #00AD89, #4dffbb);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.blog-icon i {
+  font-size: 24px;
+  color: white;
+}
+
+.blog-content {
+  flex: 1;
+}
+
+.blog-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 22px;
+  color: #ffffff;
+  font-family: 'Anta', sans-serif;
+  font-weight: 600;
+}
+
+.blog-excerpt {
+  margin: 0 0 15px 0;
+  color: #d0d0d0;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.blog-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.blog-date {
+  color: #b0b0b0;
+  font-size: 14px;
+  font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'SF Mono', monospace;
+}
+
+.blog-link {
+  color: #00AD89;
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 6px;
+}
+
+.blog-link:hover {
+  background-color: rgba(0, 173, 137, 0.1);
+  transform: translateX(3px);
+}
+
+.blog-link i {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.blog-link:hover i {
+  transform: translateX(2px);
+}
+
+@media (max-width: 768px) {
+  .blog-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .blog-icon {
+    margin: 0 auto 15px auto;
+  }
+  
+  .blog-meta {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* About Me Buttons */
+.about-buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.about-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 25px;
+  background: linear-gradient(135deg, #00AD89, #4dffbb);
+  color: white !important;
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Anta', sans-serif;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 173, 137, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.about-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 173, 137, 0.4);
+  background: linear-gradient(135deg, #4dffbb, #00AD89);
+}
+
+.about-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 173, 137, 0.3);
+}
+
+.about-btn i {
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .about-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .about-btn {
+    width: 100%;
+    max-width: 250px;
+    justify-content: center;
+  }
+}
+
+section#about-me,
+section#projects,
+section#blog {
+  color: #f5f5f5;
+}
+
+section#about-me h2,
+section#projects h2,
+section#blog h2 {
+  color: #ffffff;
+}
+
+section#about-me p,
+section#projects p,
+section#blog p,
+section#about-me h3,
+section#projects h3,
+section#blog h3,
+section#about-me h4,
+section#projects h4,
+section#blog h4 {
+  color: #e0e0e0;
+}
+
+section#about-me a,
+section#projects a,
+section#blog a {
+  color: #00AD89;
+}
+
+/* Blog Layout Specific Styles */
+.blog-layout {
+  padding-top: 80px; /* Account for fixed header */
+}
+
+.blog-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(31, 30, 30, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1rem 2rem;
+  border-bottom: 2px solid #555555;
+}
+
+.blog-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blog-nav .personal-logo a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.blog-nav ul {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.blog-nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.blog-nav ul li a:hover {
+  color: #4ecdc4;
+}
+
+/* Remove the general header/nav changes that were affecting main site */
+body {
+  padding-top: 0; /* Reset this for main site */
+}
+
+.blog-layout {
+  padding-top: 80px; /* Only apply to blog pages */
 }

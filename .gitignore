@@ -1,0 +1,6 @@
+
+# Jekyll build files
+_site/
+.jekyll-cache/
+.sass-cache/
+Gemfile.lock

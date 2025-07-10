@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% if page.title %}{{ page.title }} - {% endif %}parkerdev</title>
+  <link rel="stylesheet" href="{{ '/resources/style.css' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/4f1c32824f.js" crossorigin="anonymous"></script>
+  {% seo %}
+</head>
+<body class="blog-layout">
+  <header class="blog-header">
+    <nav class="blog-nav">
+      <div class="personal-logo">
+        <a href="{{ '/' | relative_url }}">Parkerdev</a>
+      </div>
+      <ul id="nav-list">
+        <li><a href="{{ '/' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/#projects' | relative_url }}">Projects</a></li>
+        <li><a href="{{ '/#blog' | relative_url }}">Blog</a></li>
+        <li><a href="{{ '/#contact' | relative_url }}">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  {{ content }}
+
+  <script src="{{ '/resources/app.js' | relative_url }}"></script>
+</body>
+</html>

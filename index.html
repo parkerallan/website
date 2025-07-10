@@ -5,10 +5,10 @@
   <link rel="stylesheet" href="resources/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
   <script src="https://kit.fontawesome.com/4f1c32824f.js" crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="resources/images/favicon.ico" />
+  <!-- <link rel="icon" type="image/png" href="resources/images/favicon.ico" /> -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWVMGN3FXC"></script>
   <script>
@@ -22,10 +22,9 @@
 <body>
   <section class="hero">
     <nav>
-      <img class="logo" src="resources/images/logo.png" alt="logo">
       <ul id="nav-list">
-        <!--<li><a href="#about-me">About Me</a></li>-->
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="hamburger" id="hamburger">
@@ -36,21 +35,32 @@
       <div class="hero-text">
         <h1>Parker Allan</h1>
         <p>Software Development Engineer in Test</p>
-        <a href="#about-me"><div class="button">About Me</div></a>
       </div>
-        <img class="graphic" src="resources/images/graphic.png" alt="graphic">
-    </div>  
+    </div>
+    <img class="graphic" src="resources/images/graphic1.png" alt="graphic">
   </section>
-  <section style="border-top: #00AD89 solid 8px;" id="about-me" class="subsection">
+  
+  <!-- Floating Navigation Arrow -->
+  <div id="floating-arrow" class="floating-arrow">
+    <i class="fas fa-chevron-down"></i>
+  </div>
+
+  <section id="about-me" class="subsection">
     <div>
       <h2>About Me</h2>
-        <p>Hello, I'm Parker Allan. I'm a Software Development Major from Champlain College with a strong interest in all things tech.
-          <br>
-          <br>
-          I have been programming for 4+ years and I have professional experience working with QA Automation and Web Development. I'm interested in analytical insight and building better software.
-          <br>
-          <br>
-          Recently, I've been working on my development skills. Below I have some projects to check out. Also view my GitHub <a style="color: blue;" target=”_blank” href="https://github.com/parkerallan">here.</a></p>
+        <p>Hello, I'm Parker Allan — a Software Development Engineer in Test with a strong foundation in programming and a growing passion for computer systems and architecture. 
+          <br><br> With over four years of experience in the tech industry, my work includes the development and quality assurance of IAM, Automation, and Artificial Intelligence applications. I thrive at the intersection of reliability, performance, and user experience. 
+          <br><br> Lately, my focus has expanded to include FPGA design, digital logic, and low-level systems programming, as I explore hardware/software co-design to solve more complex engineering problems. 
+          <br><br> Below you can find my github, resume, and projects I’ve been building.
+        </p>
+        <div class="about-buttons">
+          <a href="https://github.com/parkerallan" target="_blank" class="about-btn">
+            <i class="fab fa-github"></i> View GitHub
+          </a>
+          <a href="resources/docs/r_parker.pdf" target="_blank" class="about-btn">
+            <i class="fas fa-file-pdf"></i> View Resume
+          </a>
+        </div>
     </div>
     <div class="headshot-section">
       <img class="headshot" src="resources/images/pfp.jpeg" alt="headshot pic"/>
@@ -63,41 +73,59 @@
       <div id="hidden-content" class="project-container"></div>
     </div>
     <div>
-      <h4 style='color: rgb(47, 49, 49); cursor: pointer; margin-bottom: 30px;' id="viewBtn" onclick="viewMore()">View Older Projects <i
+      <h4 style='color: rgb(47, 49, 49); cursor: pointer; margin-bottom: 30px;' class="view-older-btn" id="viewBtn" onclick="viewMore()">View Older Projects <i
         class="fas fa-arrow-circle-down"></i>
       </h4>
     </div>
   </section>
-  <script src="resources/app.js"></script>
-  </body>
-  <footer id="contact">
+  
+  <section id="blog" class="subsection">
     <div>
-      <h2>Contact Me</h2>
-      <div class="socials">
-        <div>
-          <a href="https://www.linkedin.com/in/parker-allan-072664175/" target="_blank" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="50" height="50" viewBox="0 0 24 24">
-              <path
-                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-            </svg>
-          </a>
-        </div>
-        <div>
-          <a href="https://github.com/parkerallan" target="_blank" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="50" height="50" viewBox="0 0 24 24">
-              <path
-                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-          </a>
-        </div>
-        <div>
-          <a href="https://twitter.com/parkxrdev" target="_blank" class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
-              <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
-            </svg>
-          </a>
+      <h2>Blog <a href="/feed.xml" target="_blank" class="rss-link" title="Subscribe to RSS Feed"><i class="fas fa-rss"></i></a></h2>
+      <div class="blog-container">
+        <div id="blog-list" class="blog-list">
+          <!-- Blog articles will be populated dynamically by JavaScript -->
         </div>
       </div>
+    </div>
+  </section>
+  
+  <script src="resources/app.js"></script>
+  </body>  <footer id="contact">
+    <div class="socials">
+      <div>
+        <a href="https://www.linkedin.com/in/parker-allan-072664175/" target="_blank" class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="50" height="50" viewBox="0 0 24 24">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+          </svg>
+        </a>
+      </div>
+      <div>
+        <a href="https://github.com/parkerallan" target="_blank" class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="50" height="50" viewBox="0 0 24 24">
+            <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+          </svg>
+        </a>
+      </div>
+      <div>
+        <a href="https://twitter.com/parkxrdev" target="_blank" class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+            <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+          </svg>
+        </a>
+      </div>
+      <div>
+        <a href="https://bsky.app/profile/parkxrdev.bsky.social" target="_blank" class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" viewBox="0 0 576 512">
+            <path d="M407.8 294.7c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3zM288 227.1C261.9 176.4 190.9 81.9 124.9 35.3C61.6-9.4 37.5-1.7 21.6 5.5C3.3 13.8 0 41.9 0 58.4S9.1 194 15 213.9c19.5 65.7 89.1 87.9 153.2 80.7c3.3-.5 6.6-.9 10-1.4c-3.3 .5-6.6 1-10 1.4C74.3 308.6-9.1 342.8 100.3 464.5C220.6 589.1 265.1 437.8 288 361.1c22.9 76.7 49.2 222.5 185.6 103.4c102.4-103.4 28.1-156-65.8-169.9c-3.3-.4-6.7-.8-10-1.3c3.4 .4 6.7 .9 10 1.3c64.1 7.1 133.6-15.1 153.2-80.7C566.9 194 576 75 576 58.4s-3.3-44.7-21.6-52.9c-15.8-7.1-40-14.9-103.2 29.8C385.1 81.9 314.1 176.4 288 227.1z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form-container">
+      <h2>Contact</h2>
       <form action="https://formsubmit.co/c5ed3c27086810a7d639f784e5920761" method="POST">
         <div class="group">
           <input type="text" name="Name" required>
@@ -124,7 +152,7 @@
       </form>
     </div>
     <div>
-      <p style="float: right; color: whitesmoke; font-size: 20px; margin-top: 270px; margin-right: 20px;">2025 | Parkerdev</p>
+      <p style="position: absolute; bottom: 20px; right: 20px; color: whitesmoke; font-size: 20px; margin: 0;">2025 | Parkerdev</p>
     </div>
     <div style="margin: 29px 950px 0px 0px; opacity: 0;">
       <img src="resources/images/graphic-reverse.png" alt="graphic" width="500" height="300">
