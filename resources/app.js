@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function initFloatingArrow() {
   const floatingArrow = document.getElementById('floating-arrow');
   const arrowIcon = floatingArrow.querySelector('i');
-  const sections = ['projects', 'blog', 'about-me', 'contact'];
+  const sections = ['about-me','projects', 'blog',  'contact'];
   let currentSectionIndex = 0;
 
   function updateArrowDirection() {
