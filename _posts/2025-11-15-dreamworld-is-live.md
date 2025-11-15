@@ -51,6 +51,6 @@ Dream World represents more than just a game. It's a milestone in me having a cr
 Anyways, thanks for reading, and here's to more ambitious projects ahead!
 
 ---
-
-*Dream World is available on [itch.io](https://nerix90.itch.io/dream-world). 
-Check it out and let me know your thoughts! Thanks*
+## Check It Out
+Dream World is available here on itch.io: [https://nerix90.itch.io/dream-world](https://nerix90.itch.io/dream-world). 
+Let me know your thoughts! Thanks
