@@ -144,7 +144,7 @@ function populateBlog() {
       icon: "fas fa-gamepad",
       title: "Dream World is Live!",
       excerpt: "My first large-scale Unity project and lessons learned.",
-      date: "November 11th, 2025",
+      date: "November 15th, 2025",
       link: "/blog/dreamworld-is-live/"
     },
     {
