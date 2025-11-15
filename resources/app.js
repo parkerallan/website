@@ -65,6 +65,12 @@ function initFloatingArrow() {
 function populateProjects(){
   const projects = [
     {
+        imgSrc: "resources/images/drift.png",
+        title: "Drift64 Demo",
+        description: "Car selection demo rendered using Nintendo 64 hardware. Written in C, using LibDragon SDK/Tiny3D.",
+        link: "https://youtu.be/LnZYQuai8as"
+    },
+    {
         imgSrc: "resources/images/albums.png",
         title: "My Music",
         description: "House and Trance music I've created for my upcoming Unity 3D action game. (Vol. 2 soon!)",
@@ -134,6 +140,13 @@ function populateProjects(){
 
 function populateBlog() {
   const blogArticles = [
+    {
+      icon: "fas fa-gamepad",
+      title: "Dream World is Live!",
+      excerpt: "My first large-scale Unity project and lessons learned.",
+      date: "November 11th, 2025",
+      link: "/blog/dreamworld-is-live/"
+    },
     {
       icon: "fas fa-rocket",
       title: "Blog is Now Live!",
