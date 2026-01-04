@@ -11,13 +11,14 @@ document.addEventListener("DOMContentLoaded", () => {
   populateProjects(); // Call populateProjects once DOM is loaded
   populateBlog(); // Call populateBlog once DOM is loaded
   initFloatingArrow(); // Initialize floating arrow navigation
+  init3DArt(); // Initialize 3D Art model viewer
 });
 
 // Floating Arrow Navigation
 function initFloatingArrow() {
   const floatingArrow = document.getElementById('floating-arrow');
   const arrowIcon = floatingArrow.querySelector('i');
-  const sections = ['about-me','projects', 'blog',  'contact'];
+  const sections = ['about-me', 'projects', '3d-art', 'blog', 'contact'];
   let currentSectionIndex = 0;
 
   function updateArrowDirection() {
@@ -205,4 +206,207 @@ function viewMore() {
       });
     }, 100);
   }
+}
+
+// 3D Art Model Viewer
+function init3DArt() {
+  const modelViewer = document.getElementById('character-model');
+  const modelSelect = document.getElementById('model-select');
+  const animationSelect = document.getElementById('animation-select');
+  const outfitSelect = document.getElementById('outfit-select');
+
+  if (!modelViewer) return;
+
+  // ============================================
+  // MODEL CONFIGURATION - Add new models here!
+  // ============================================
+  const modelsConfig = {
+    'osaka': {
+      name: 'Ayumu Kasuga "Osaka"',
+      file: 'resources/models/osaka.glb',
+      defaultAnimation: 'Idle',
+      camera: {
+        orbit: '0deg 75deg 4m',
+        minOrbit: 'auto auto 8m',
+        maxOrbit: 'auto auto 8m'
+      },
+      outfits: {
+        'summer': {
+          label: 'Summer Outfit',
+          show: ['summerskirt', 'summershirt', 'tie2'],
+          hide: ['winterskirt', 'wintershirt', 'tie3']
+        },
+        'winter': {
+          label: 'Winter Outfit',
+          show: ['winterskirt', 'wintershirt', 'tie3'],
+          hide: ['summerskirt', 'summershirt', 'tie2']
+        }
+      },
+      defaultOutfit: 'winter'
+    }
+    // Add more models here:
+    // 'modelName': {
+    //   name: 'Display Name',
+    //   file: 'resources/models/filename.glb',
+    //   defaultAnimation: 'Idle',
+    //   camera: { orbit: '0deg 75deg 4m', minOrbit: 'auto auto 2m', maxOrbit: 'auto auto 8m' },
+    //   outfits: {
+    //     'outfitKey': { label: 'Display Name', show: ['material1'], hide: ['material2'] }
+    //   },
+    //   defaultOutfit: 'outfitKey'
+    // }
+  };
+
+  let currentModelConfig = null;
+
+  // Initialize model selector dropdown
+  function initModelSelector() {
+    modelSelect.innerHTML = '';
+    Object.entries(modelsConfig).forEach(([key, config], index) => {
+      const option = document.createElement('option');
+      option.value = key;
+      option.textContent = config.name;
+      if (index === 0) option.selected = true;
+      modelSelect.appendChild(option);
+    });
+
+    // Load the first model
+    const firstModelKey = Object.keys(modelsConfig)[0];
+    loadModel(firstModelKey);
+  }
+
+  // Load a model by key
+  function loadModel(modelKey) {
+    currentModelConfig = modelsConfig[modelKey];
+    if (!currentModelConfig) return;
+
+    // Set camera position
+    modelViewer.setAttribute('camera-orbit', currentModelConfig.camera.orbit);
+    modelViewer.setAttribute('min-camera-orbit', currentModelConfig.camera.minOrbit);
+    modelViewer.setAttribute('max-camera-orbit', currentModelConfig.camera.maxOrbit);
+
+    // Load the model file
+    modelViewer.src = currentModelConfig.file;
+
+    // Update outfit dropdown
+    updateOutfitDropdown();
+  }
+
+  // Update outfit dropdown based on current model
+  function updateOutfitDropdown() {
+    outfitSelect.innerHTML = '';
+    
+    if (!currentModelConfig || !currentModelConfig.outfits) {
+      outfitSelect.style.display = 'none';
+      return;
+    }
+
+    outfitSelect.style.display = 'block';
+    Object.entries(currentModelConfig.outfits).forEach(([key, outfit]) => {
+      const option = document.createElement('option');
+      option.value = key;
+      option.textContent = outfit.label;
+      if (key === currentModelConfig.defaultOutfit) option.selected = true;
+      outfitSelect.appendChild(option);
+    });
+  }
+
+  // Handle model load event
+  modelViewer.addEventListener('load', () => {
+    console.log('3D Model loaded:', currentModelConfig?.name);
+    
+    // Update animation dropdown from model
+    const availableAnimations = modelViewer.availableAnimations;
+    
+    if (availableAnimations && availableAnimations.length > 0) {
+      animationSelect.innerHTML = '';
+      
+      availableAnimations.forEach((animName) => {
+        const option = document.createElement('option');
+        option.value = animName;
+        option.textContent = animName;
+        
+        if (animName === currentModelConfig?.defaultAnimation) {
+          option.selected = true;
+        }
+        
+        animationSelect.appendChild(option);
+      });
+      
+      // Set default animation
+      if (currentModelConfig?.defaultAnimation) {
+        modelViewer.animationName = currentModelConfig.defaultAnimation;
+      }
+    }
+
+    // Log available materials for debugging
+    if (modelViewer.model && modelViewer.model.materials) {
+      console.log('Available materials:', modelViewer.model.materials.map(m => m.name));
+      
+      // Apply default outfit
+      if (currentModelConfig?.defaultOutfit) {
+        updateMeshVisibility(currentModelConfig.defaultOutfit);
+      }
+    }
+  });
+
+  // Handle model selection change
+  modelSelect.addEventListener('change', (event) => {
+    loadModel(event.target.value);
+  });
+
+  // Handle animation selection
+  animationSelect.addEventListener('change', (event) => {
+    modelViewer.animationName = event.target.value;
+    modelViewer.play();
+  });
+
+  // Handle outfit selection
+  outfitSelect.addEventListener('change', (event) => {
+    updateMeshVisibility(event.target.value);
+  });
+
+  // Helper function to update alpha value on a material
+  function updateAlphaValue(material, alpha) {
+    if (!material) return;
+    if (alpha === 1) {
+      material.setAlphaMode('OPAQUE');
+    } else {
+      material.setAlphaMode('BLEND');
+      const pbr = material.pbrMetallicRoughness;
+      const baseColor = pbr.baseColorFactor;
+      baseColor[3] = alpha;
+      pbr.setBaseColorFactor(baseColor);
+    }
+  }
+
+  // Function to update mesh visibility based on outfit selection
+  function updateMeshVisibility(outfitKey) {
+    if (!modelViewer.model || !currentModelConfig?.outfits) return;
+
+    const outfit = currentModelConfig.outfits[outfitKey];
+    if (!outfit) return;
+
+    // Show materials for this outfit
+    outfit.show.forEach(materialName => {
+      const material = modelViewer.model.getMaterialByName(materialName);
+      updateAlphaValue(material, 1);
+    });
+
+    // Hide materials not in this outfit
+    outfit.hide.forEach(materialName => {
+      const material = modelViewer.model.getMaterialByName(materialName);
+      updateAlphaValue(material, 0);
+    });
+
+    console.log('Outfit changed to:', outfitKey);
+  }
+
+  // Handle model errors
+  modelViewer.addEventListener('error', (event) => {
+    console.error('Error loading 3D model:', event);
+  });
+
+  // Initialize
+  initModelSelector();
 }
