@@ -66,6 +66,12 @@ function initFloatingArrow() {
 function populateProjects(){
   const projects = [
     {
+        imgSrc: "resources/images/exporter.png",
+        title: "Playstation 1 Blender Exporter",
+        description: "Blender addon that exports models and animation data for PSY-Q or PsyQo PlayStation 1 development",
+        link: "https://github.com/parkerallan/PS1-Blender-Exporter"
+    },
+    {
         imgSrc: "resources/images/drift.png",
         title: "Drift64 Demo",
         description: "Car selection demo rendered using Nintendo 64 hardware. Written in C, using LibDragon SDK/Tiny3D.",
