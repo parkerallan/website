@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
   <meta charset="UTF-8">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
   <script src="https://kit.fontawesome.com/4f1c32824f.js" crossorigin="anonymous"></script>
   <!-- <link rel="icon" type="image/png" href="resources/images/favicon.ico" /> -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -24,6 +25,7 @@
     <nav>
       <ul id="nav-list">
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#3d-art">3D Art</a></li>
         <li><a href="#blog">Blog</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -48,9 +50,9 @@
   <section id="about-me" class="subsection">
     <div>
       <h2>About Me</h2>
-        <p>Hello, I'm Parker Allan — a Software Development Engineer in Test with a strong foundation in programming and a growing passion for computer systems and architecture. 
-          <br><br> With over four years of experience in the tech industry, my work includes the development and quality assurance of IAM, Automation, and Artificial Intelligence applications. I thrive at the intersection of reliability, performance, and user experience. 
-          <br><br> Lately, my focus has expanded to include FPGA design, digital logic, and low-level systems programming, as I explore hardware/software co-design to solve more complex engineering problems. 
+        <p>Hello, I'm Parker Allan — a Software Development Engineer in Test with a strong foundation in programming and with a passion for technology and art. 
+          <br><br> With over four years of experience in the tech industry, my work includes the development and quality assurance of IAM, Automation, and AI applications. I thrive at the intersection of reliability, performance, and user experience. 
+          <br><br> Lately, my focus has been on game development. I've been trying to get better at low-level/C programming, as I explore hardware/software co-design in systems like the Nintendo 64. 
           <br><br> Below you can find my github, resume, and projects I’ve been building.
         </p>
         <div class="about-buttons">
@@ -76,6 +78,45 @@
       <h4 style='color: rgb(47, 49, 49); cursor: pointer; margin-bottom: 30px;' class="view-older-btn" id="viewBtn" onclick="viewMore()">View Older Projects <i
         class="fas fa-arrow-circle-down"></i>
       </h4>
+    </div>
+  </section>
+
+  <section id="3d-art" class="subsection">
+    <div class="model-viewer-container">
+      <h2>3D Art</h2>
+      <p class="model-description">View some of my 3D work in an interactive viewer.</p>
+      <div class="model-controls">
+        <div class="control-group">
+          <select id="model-select">
+            <!-- Populated dynamically from config -->
+          </select>
+        </div>
+        <div class="control-group">
+          <select id="animation-select">
+            <!-- Populated dynamically based on model -->
+          </select>
+        </div>
+        <div class="control-group">
+          <select id="outfit-select">
+            <!-- Populated dynamically based on model -->
+          </select>
+        </div>
+      </div>
+      <model-viewer
+        id="character-model"
+        alt="3D Character Model"
+        camera-controls
+        touch-action="pan-y"
+        autoplay
+        shadow-intensity="1"
+        exposure="1"
+        environment-image="neutral"
+      >
+        <div class="model-loading" slot="poster">
+          <div class="spinner"></div>
+          <p>Loading model...</p>
+        </div>
+      </model-viewer>
     </div>
   </section>
   
@@ -152,7 +193,7 @@
       </form>
     </div>
     <div>
-      <p style="position: absolute; bottom: 20px; right: 20px; color: whitesmoke; font-size: 20px; margin: 0;">2025 | Parkerdev</p>
+      <p style="position: absolute; bottom: 20px; right: 20px; color: whitesmoke; font-size: 20px; margin: 0;">2026 | Parkerdev</p>
     </div>
     <div style="margin: 29px 950px 0px 0px; opacity: 0;">
       <img src="resources/images/graphic-reverse.png" alt="graphic" width="500" height="300">
