@@ -66,6 +66,12 @@ function initFloatingArrow() {
 function populateProjects(){
   const projects = [
     {
+        imgSrc: "resources/images/starstrike64.png",
+        title: "StarStrike 64",
+        description: "Nintendo 64 shmup/rails shooter mecha game. Written in C, using LibDragon SDK/Tiny3D.",
+        link: "https://github.com/parkerallan/starstrike64"
+    },
+    {
         imgSrc: "resources/images/exporter.png",
         title: "Playstation 1 Blender Exporter",
         description: "Blender addon that exports models and animation data for PSY-Q or PsyQo PlayStation 1 development",
