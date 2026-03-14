@@ -941,6 +941,30 @@ section#3d-art {
   justify-content: center;
 }
 
+.vrm-download-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #00AD89 0%, #008F6F 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 173, 137, 0.3);
+}
+
+.vrm-download-button:hover {
+  background: linear-gradient(135deg, #00C49A 0%, #00AD89 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 173, 137, 0.4);
+}
+
+.vrm-download-button i {
+  margin-right: 8px;
+}
+
 .control-group {
   display: flex;
   flex-direction: column;

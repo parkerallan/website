@@ -84,7 +84,7 @@
   <section id="3d-art" class="subsection">
     <div class="model-viewer-container">
       <h2>3D Art</h2>
-      <p class="model-description">View some of my 3D work in an interactive viewer.</p>
+      <p class="model-description">View my 3D character work made in Blender. You can interact with the model, change its outfit, and download the VRM mocap version if available.</p>
       <div class="model-controls">
         <div class="control-group">
           <select id="model-select">
@@ -102,15 +102,19 @@
           </select>
         </div>
       </div>
+      <a id="vrm-download-button" class="vrm-download-button" style="display: none;" href="#" target="_blank">
+        <i class="fas fa-download"></i> Download VRM Version
+      </a>
       <model-viewer
         id="character-model"
         alt="3D Character Model"
         camera-controls
         touch-action="pan-y"
         autoplay
-        shadow-intensity="1"
-        exposure="1"
-        environment-image="neutral"
+        shadow-intensity="0"
+        shadow-softness="0"
+        exposure="2"
+        tone-mapping="neutral"
       >
         <div class="model-loading" slot="poster">
           <div class="spinner"></div>

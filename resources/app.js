@@ -226,13 +226,34 @@ function init3DArt() {
   const modelSelect = document.getElementById('model-select');
   const animationSelect = document.getElementById('animation-select');
   const outfitSelect = document.getElementById('outfit-select');
+  const vrmButton = document.getElementById('vrm-download-button');
 
   if (!modelViewer) return;
-
+  
   // ============================================
   // MODEL CONFIGURATION - Add new models here!
   // ============================================
   const modelsConfig = {
+    'beatrice': {
+      name: 'Beatrice The Golden Witch',
+      file: 'resources/models/beatrice.glb',
+      defaultAnimation: 'Idle',
+      camera: {
+        orbit: '0deg 75deg 3.5m',
+        minOrbit: 'auto auto 1.5m',
+        maxOrbit: 'auto auto 4m'
+      },
+      outfits: {
+        'default': {
+          label: 'Default',
+          show: [],
+          hide: []
+        }
+      },
+      defaultOutfit: 'default',
+      isVRM: true,
+      vrmDownloadUrl: 'https://parkerallan.itch.io/beatrice-vrm-avatar'
+    },
     'osaka': {
       name: 'Ayumu Kasuga "Osaka"',
       file: 'resources/models/osaka.glb',
@@ -255,7 +276,7 @@ function init3DArt() {
         }
       },
       defaultOutfit: 'winter'
-    }
+    },
     // Add more models here:
     // 'modelName': {
     //   name: 'Display Name',
@@ -265,7 +286,9 @@ function init3DArt() {
     //   outfits: {
     //     'outfitKey': { label: 'Display Name', show: ['material1'], hide: ['material2'] }
     //   },
-    //   defaultOutfit: 'outfitKey'
+    //   defaultOutfit: 'outfitKey',
+    //   isVRM: true,  // Optional: set to true if VRM version is available
+    //   vrmDownloadUrl: 'https://example.com/download-page'  // Optional: URL to VRM download page
     // }
   };
 
@@ -302,6 +325,9 @@ function init3DArt() {
 
     // Update outfit dropdown
     updateOutfitDropdown();
+    
+    // Update VRM download button
+    updateVrmButton();
   }
 
   // Update outfit dropdown based on current model
@@ -321,6 +347,17 @@ function init3DArt() {
       if (key === currentModelConfig.defaultOutfit) option.selected = true;
       outfitSelect.appendChild(option);
     });
+  }
+
+  // Update VRM download button based on current model
+  function updateVrmButton() {
+    if (!currentModelConfig || !currentModelConfig.isVRM || !currentModelConfig.vrmDownloadUrl) {
+      vrmButton.style.display = 'none';
+      return;
+    }
+    
+    vrmButton.style.display = 'inline-block';
+    vrmButton.href = currentModelConfig.vrmDownloadUrl;
   }
 
   // Handle model load event
