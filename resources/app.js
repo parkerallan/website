@@ -252,7 +252,7 @@ function init3DArt() {
       },
       defaultOutfit: 'default',
       isVRM: true,
-      vrmDownloadUrl: 'https://parkerallan.itch.io/beatrice-vrm-avatar'
+      vrmDownloadUrl: 'https://parkerallan.itch.io/beatrice-vrm-model'
     },
     'osaka': {
       name: 'Ayumu Kasuga "Osaka"',
