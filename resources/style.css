@@ -16,6 +16,20 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Performance optimization */
+img {
+  content-visibility: auto;
+}
+
+iframe {
+  content-visibility: auto;
+}
+
+.card, .card-full-width {
+  content-visibility: auto;
+  contain-intrinsic-size: 535px 300px;
+}
+
 body{
   font-family: 'Anta', sans-serif;
   font-weight: 400;
@@ -258,6 +272,41 @@ svg {
   text-align: left;
 }
 
+.subtext-list {
+  font-size: 14px;
+  font-family: 'Consolas', 'Monaco', 'Cascadia Code', 'Fira Code', 'Source Code Pro', 'SF Mono', monospace;
+  font-weight: 400;
+  margin: 18px;
+  padding-left: 20px;
+  line-height: 1.6;
+  color: #d0d0d0;
+  text-align: left;
+  list-style-type: none;
+  display: block;
+}
+
+.subtext-list li {
+  margin-bottom: 8px;
+  position: relative;
+  padding-left: 15px;
+  display: block;
+}
+
+.subtext-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00AD89;
+  font-weight: bold;
+}
+
+.card-full-width .subtext-list {
+  font-size: 15px;
+  margin: 0 0 15px 0;
+  padding-left: 20px;
+  display: block;
+}
+
 .view-text {
   text-decoration: none;
   color: #00AD89;
@@ -280,6 +329,114 @@ svg {
 
 .card .subtext:last-child {
   text-align: center;
+}
+
+.card-full-width {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 25px 0;
+  border-radius: 10px;
+  background: rgba(40, 40, 40, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+  border-left: 4px solid #00AD89;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  min-height: 300px;
+  flex-basis: 100%;
+}
+
+.card-full-width.reverse {
+  flex-direction: row-reverse;
+  border-left: none;
+  border-right: 4px solid #00AD89;
+}
+
+.card-full-width:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  background: rgba(50, 50, 50, 1);
+}
+
+.card-full-width .project-image-container {
+  flex: 0 0 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(30, 30, 30, 0.5);
+  border-radius: 10px 0 0 10px;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.card-full-width.reverse .project-image-container {
+  border-radius: 0 10px 10px 0;
+}
+
+.card-full-width .project-video {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+.card-full-width .project-image {
+  width: 100%;
+  height: auto;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.card-full-width .project-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.card-full-width h3 {
+  color: #ffffff;
+  font-size: 24px;
+  margin: 0 0 15px 0;
+}
+
+.card-full-width .subtext {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 15px 0;
+  flex-grow: 1;
+}
+
+.card-full-width .project-footer {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .card-full-width {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .card-full-width .project-image-container {
+    flex: 0 0 auto;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .card-full-width .project-image {
+    max-height: 250px;
+  }
+  
+  .card-full-width .project-content {
+    padding: 20px;
+  }
 }
 
 .floating-arrow {
@@ -943,7 +1100,8 @@ section#3d-art {
 
 .vrm-download-button {
   display: inline-block;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 0px;
   padding: 12px 24px;
   background: linear-gradient(135deg, #00AD89 0%, #008F6F 100%);
   color: white;
@@ -1012,6 +1170,52 @@ section#3d-art {
   padding: 10px;
 }
 
+.model-viewer-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.model-nav-arrow {
+  background: linear-gradient(135deg, #00AD89, #4dffbb);
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 173, 137, 0.3);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.model-nav-arrow:hover {
+  background: linear-gradient(135deg, #4dffbb, #00AD89);
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 173, 137, 0.5);
+}
+
+.model-nav-arrow:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(0, 173, 137, 0.3);
+}
+
+.model-nav-arrow:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 173, 137, 0.3);
+}
+
+.model-nav-arrow i {
+  pointer-events: none;
+}
+
 model-viewer {
   width: 100%;
   height: 600px;
@@ -1058,6 +1262,16 @@ model-viewer:hover {
 
 /* Responsive adjustments for 3D Art section */
 @media only screen and (max-width: 800px) {
+  .model-viewer-wrapper {
+    gap: 10px;
+  }
+
+  .model-nav-arrow {
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+
   model-viewer {
     height: 450px;
   }
@@ -1078,6 +1292,16 @@ model-viewer:hover {
 }
 
 @media only screen and (max-width: 480px) {
+  .model-viewer-wrapper {
+    gap: 5px;
+  }
+
+  .model-nav-arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
   model-viewer {
     height: 350px;
     border-radius: 10px;
