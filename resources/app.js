@@ -65,6 +65,41 @@ function initFloatingArrow() {
 
 function populateProjects(){
   const projects = [
+    // {
+    //     title: "Gamma Engine",
+    //     description: [
+    //         "Raytracing engine aiming for high performance and visual fidelity",
+    //         "Real-time Vulkan rendering with high-quality lighting and shadows",
+    //         "TAA (Temporal Anti-Aliasing) for smooth anti-aliasing",
+    //         "Spatial sound system for immersive audio experience",
+    //         "Video playback support",
+    //         "Animation system with skeletal and vertex/ARKit deformation",
+    //         "Lua scripting and node graph support for flexible development"
+    //     ],
+    //     link: "https://github.com/parkerallan",
+    //     fullWidth: true,
+    //     videoId: "jNQXAC9IVRw"
+    // },
+    {
+        title: "XenForge Engine",
+        description: [
+            "DirectX9 engine targeting the xbox 360 gaming console",
+            "Rendering pipeline supporting custom hlsl shaders and Principled BSDF",
+            "Intergrated build system for .xex and .iso images",
+            "MSAA post-processing",
+            "Realtime and baked lighting systems",
+            "Spatial sound system",
+            "Video playback support",
+            "Skeletal animation system",
+            "Facial animation support via Live Link Face for ARKit blendshapes",
+            "Lua scripting for game development"
+        ],
+        link: "https://github.com/parkerallan/XenFusion",
+        fullWidth: true,
+        imgSrc: "resources/images/xenfusion.png",
+        //videoId: "jNQXAC9IVRw",
+        reverseLayout: true
+    },
     {
         imgSrc: "resources/images/starstrike64.png",
         title: "StarStrike 64",
@@ -78,15 +113,9 @@ function populateProjects(){
         link: "https://github.com/parkerallan/PS1-Blender-Exporter"
     },
     {
-        imgSrc: "resources/images/drift.png",
-        title: "Drift64 Demo",
-        description: "Car selection demo rendered using Nintendo 64 hardware. Written in C, using LibDragon SDK/Tiny3D.",
-        link: "https://youtu.be/LnZYQuai8as"
-    },
-    {
         imgSrc: "resources/images/albums.png",
         title: "My Music",
-        description: "House and Trance music I've created for my upcoming Unity 3D action game. (Vol. 2 soon!)",
+        description: "House and Trance music I've worked on",
         link: "https://youtube.com/playlist?list=PLbIqer7yaFcPsQwOmXr_i0f4ITx2gcwjx&feature=shared"
     },
     {
@@ -95,18 +124,7 @@ function populateProjects(){
         description: "Social media platform using Django. Create posts and interact with others.",
         link: "https://github.com/parkerallan/echo"
     },
-    {
-        imgSrc: "resources/images/jetdefender.png",
-        title: "Jet Defender",
-        description: "SHMUP-style game where the player must shoot down incoming threats. 6502 ASM using the CA65 assembler.",
-        link: "https://github.com/parkerallan/jet-defender"
-    },
-    {
-        imgSrc: "resources/images/supermario.png",
-        title: "Super Mario Clone",
-        description: "WIP recreation of the first Super Mario Bros. game for the Nintendo Gameboy. Uses C and GBDK.",
-        link: "https://github.com/parkerallan/SMB_gb"
-    },
+
     {
         imgSrc: "resources/images/data.jpg",
         title: "Wildfire Predictions",
@@ -130,25 +148,86 @@ function populateProjects(){
         "Ruby on Rails CRUD app. Uses stimulus reflex for websocket features and gems like Devise and Optimism.",
       link: "https://github.com/parkerallan/ror-blog-app/",
     },
+        {
+        imgSrc: "resources/images/jetdefender.png",
+        title: "Jet Defender",
+        description: "SHMUP-style game where the player must shoot down incoming threats. 6502 ASM using the CA65 assembler.",
+        link: "https://github.com/parkerallan/jet-defender"
+    },
+    {
+        imgSrc: "resources/images/supermario.png",
+        title: "Super Mario Clone",
+        description: "WIP recreation of the first Super Mario Bros. game for the Nintendo Gameboy. Uses C and GBDK.",
+        link: "https://github.com/parkerallan/SMB_gb"
+    },
+    {
+        imgSrc: "resources/images/drift.png",
+        title: "Drift64 Demo",
+        description: "Car selection demo rendered using Nintendo 64 hardware. Written in C, using LibDragon SDK/Tiny3D.",
+        link: "https://youtu.be/LnZYQuai8as"
+    }
   ];
 
-  const createCard = (project) => `
-    <div class="card">
-      <img class="project-image" src="${project.imgSrc}" alt="${project.title}">
-      <h3>${project.title}</h3>
-      <p class="subtext">${project.description}</p>
-      <hr />
-      <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here <i class="fas fa-external-link-alt"></i></a></p>
-    </div>
-  `;
+  const createCard = (project) => {
+    const descriptionHtml = Array.isArray(project.description)
+      ? `<ul class="subtext-list">${project.description.map(item => `<li>${item}</li>`).join('')}</ul>`
+      : `<p class="subtext">${project.description}</p>`;
+    
+    return `
+      <div class="card">
+        <img class="project-image" src="${project.imgSrc}" alt="${project.title}" loading="lazy">
+        <h3>${project.title}</h3>
+        ${descriptionHtml}
+        <hr />
+        <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here <i class="fas fa-external-link-alt"></i></a></p>
+      </div>
+    `;
+  };
+
+  const createFullWidthCard = (project) => {
+    const descriptionHtml = Array.isArray(project.description)
+      ? `<ul class="subtext-list">${project.description.map(item => `<li>${item}</li>`).join('')}</ul>`
+      : `<p class="subtext">${project.description}</p>`;
+    
+    // Determine media type: prioritize imgSrc, then videoId
+    let mediaHtml;
+    if (project.imgSrc) {
+      mediaHtml = `<img class="project-image" src="${project.imgSrc}" alt="${project.title}" loading="lazy">`;
+    } else if (project.videoId) {
+      mediaHtml = `<iframe class="project-video" src="https://www.youtube.com/embed/${project.videoId}" loading="lazy" allowfullscreen></iframe>`;
+    } else {
+      mediaHtml = ''; // No media
+    }
+    
+    return `
+      <div class="card-full-width${project.reverseLayout ? ' reverse' : ''}">
+        <div class="project-image-container">
+          ${mediaHtml}
+        </div>
+        <div class="project-content">
+          <div>
+            <h3>${project.title}</h3>
+            ${descriptionHtml}
+          </div>
+          <div class="project-footer">
+            <p class="subtext"><a class="view-text" href="${project.link}" target="_blank">View Here <i class="fas fa-external-link-alt"></i></a></p>
+          </div>
+        </div>
+      </div>
+    `;
+  };
 
   // Populate main project container
   const projectContainer = document.getElementById("projects-container");
-  projectContainer.innerHTML = projects.map(createCard).join("");
+  projectContainer.innerHTML = projects.map(project => {
+    return project.fullWidth ? createFullWidthCard(project) : createCard(project);
+  }).join("");
 
   // Populate hidden content container
   const hiddenContent = document.getElementById("hidden-content");
-  hiddenContent.innerHTML = hiddenProjects.map(createCard).join("");
+  hiddenContent.innerHTML = hiddenProjects.map(project => {
+    return project.fullWidth ? createFullWidthCard(project) : createCard(project);
+  }).join("");
 }
 
 function populateBlog() {
@@ -227,6 +306,7 @@ function init3DArt() {
   const animationSelect = document.getElementById('animation-select');
   const outfitSelect = document.getElementById('outfit-select');
   const vrmButton = document.getElementById('vrm-download-button');
+  const artSection = document.getElementById('3d-art');
 
   if (!modelViewer) return;
   
@@ -234,6 +314,29 @@ function init3DArt() {
   // MODEL CONFIGURATION - Add new models here!
   // ============================================
   const modelsConfig = {
+    'chocola': {
+      name: 'Chocola - Not rigged or textured',
+      file: 'resources/models/chocola.glb',
+      defaultAnimation: 'Idle',
+      camera: {
+        orbit: '0deg 75deg 3.5m',
+        minOrbit: 'auto auto 2m',
+        maxOrbit: 'auto auto 8m'
+      },
+      lighting: {
+        exposure: '0.25',
+        shadowIntensity: '0'
+      },
+      outfits: {
+        'default': {
+          label: 'Default',
+          show: [],
+          hide: []
+        }
+      },
+      defaultOutfit: 'default',
+      isVRM: false
+    },
     'beatrice': {
       name: 'Beatrice The Golden Witch',
       file: 'resources/models/beatrice.glb',
@@ -242,6 +345,10 @@ function init3DArt() {
         orbit: '0deg 75deg 3.5m',
         minOrbit: 'auto auto 1.5m',
         maxOrbit: 'auto auto 4m'
+      },
+      lighting: {
+        exposure: '2',
+        shadowIntensity: '0'
       },
       outfits: {
         'default': {
@@ -262,6 +369,10 @@ function init3DArt() {
         orbit: '0deg 75deg 4m',
         minOrbit: 'auto auto 8m',
         maxOrbit: 'auto auto 8m'
+      },
+      lighting: {
+        exposure: '2',
+        shadowIntensity: '0'
       },
       outfits: {
         'summer': {
@@ -315,10 +426,22 @@ function init3DArt() {
     currentModelConfig = modelsConfig[modelKey];
     if (!currentModelConfig) return;
 
+    console.log('Loading model:', currentModelConfig.name);
+
     // Set camera position
     modelViewer.setAttribute('camera-orbit', currentModelConfig.camera.orbit);
     modelViewer.setAttribute('min-camera-orbit', currentModelConfig.camera.minOrbit);
     modelViewer.setAttribute('max-camera-orbit', currentModelConfig.camera.maxOrbit);
+
+    // Set lighting settings if specified
+    if (currentModelConfig.lighting) {
+      if (currentModelConfig.lighting.exposure) {
+        modelViewer.setAttribute('exposure', currentModelConfig.lighting.exposure);
+      }
+      if (currentModelConfig.lighting.shadowIntensity) {
+        modelViewer.setAttribute('shadow-intensity', currentModelConfig.lighting.shadowIntensity);
+      }
+    }
 
     // Load the model file
     modelViewer.src = currentModelConfig.file;
@@ -455,6 +578,39 @@ function init3DArt() {
   modelViewer.addEventListener('error', (event) => {
     console.error('Error loading 3D model:', event);
   });
+
+  // Navigation arrow functionality
+  const prevBtn = document.getElementById('prev-model-btn');
+  const nextBtn = document.getElementById('next-model-btn');
+  
+  if (prevBtn && nextBtn) {
+    const modelKeys = Object.keys(modelsConfig);
+    let currentIndex = 0;
+
+    // Function to update current index and load model
+    function cycleModel(direction) {
+      if (direction === 'next') {
+        currentIndex = (currentIndex + 1) % modelKeys.length;
+      } else {
+        currentIndex = (currentIndex - 1 + modelKeys.length) % modelKeys.length;
+      }
+      
+      const newModelKey = modelKeys[currentIndex];
+      loadModel(newModelKey);
+      
+      // Update dropdown to match
+      modelSelect.value = newModelKey;
+    }
+
+    // Add event listeners to arrow buttons
+    prevBtn.addEventListener('click', () => cycleModel('prev'));
+    nextBtn.addEventListener('click', () => cycleModel('next'));
+
+    // Update currentIndex when dropdown changes
+    modelSelect.addEventListener('change', (event) => {
+      currentIndex = modelKeys.indexOf(event.target.value);
+    });
+  }
 
   // Initialize
   initModelSelector();

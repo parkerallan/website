@@ -6,9 +6,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://www.youtube.com">
   <meta charset="UTF-8">
-  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
-  <script src="https://kit.fontawesome.com/4f1c32824f.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js" defer></script>
+  <script src="https://kit.fontawesome.com/4f1c32824f.js" crossorigin="anonymous" async></script>
   <!-- <link rel="icon" type="image/png" href="resources/images/favicon.ico" /> -->
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WWVMGN3FXC"></script>
@@ -19,6 +22,7 @@
 
     gtag('config', 'G-WWVMGN3FXC');
   </script>
+  <script src="resources/app.js" defer></script>
 </head>
 <body>
   <section class="hero">
@@ -39,7 +43,7 @@
         <p>Software Development Engineer in Test</p>
       </div>
     </div>
-    <img class="graphic" src="resources/images/graphic1.png" alt="graphic">
+    <img class="graphic" src="resources/images/graphic1.png" alt="graphic" loading="lazy">
   </section>
   
   <!-- Floating Navigation Arrow -->
@@ -65,7 +69,7 @@
         </div>
     </div>
     <div class="headshot-section">
-      <img class="headshot" src="resources/images/pfp2.png" alt="headshot pic"/>
+      <img class="headshot" src="resources/images/pfp2.png" alt="headshot pic" loading="lazy"/>
     </div>
   </section>
   <section id="projects" class="subsection-alt">
@@ -102,25 +106,33 @@
           </select>
         </div>
       </div>
+      <div class="model-viewer-wrapper">
+        <button class="model-nav-arrow model-nav-left" id="prev-model-btn" aria-label="Previous model">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <model-viewer
+          id="character-model"
+          alt="3D Character Model"
+          camera-controls
+          touch-action="pan-y"
+          autoplay
+          shadow-intensity="0"
+          shadow-softness="0"
+          exposure="2"
+          tone-mapping="neutral"
+        >
+          <div class="model-loading" slot="poster">
+            <div class="spinner"></div>
+            <p>Loading model...</p>
+          </div>
+        </model-viewer>
+        <button class="model-nav-arrow model-nav-right" id="next-model-btn" aria-label="Next model">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
       <a id="vrm-download-button" class="vrm-download-button" style="display: none;" href="#" target="_blank">
         <i class="fas fa-download"></i> Download VRM Version
       </a>
-      <model-viewer
-        id="character-model"
-        alt="3D Character Model"
-        camera-controls
-        touch-action="pan-y"
-        autoplay
-        shadow-intensity="0"
-        shadow-softness="0"
-        exposure="2"
-        tone-mapping="neutral"
-      >
-        <div class="model-loading" slot="poster">
-          <div class="spinner"></div>
-          <p>Loading model...</p>
-        </div>
-      </model-viewer>
     </div>
   </section>
   
