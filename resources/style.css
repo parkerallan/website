@@ -367,8 +367,8 @@ svg {
   padding: 20px;
   background: rgba(30, 30, 30, 0.5);
   border-radius: 10px 0 0 10px;
-  aspect-ratio: 16 / 9;
   overflow: hidden;
+  min-height: 300px;
 }
 
 .card-full-width.reverse .project-image-container {
@@ -380,13 +380,14 @@ svg {
   height: 100%;
   border: none;
   border-radius: 8px;
+  aspect-ratio: 16 / 9;
 }
 
 .card-full-width .project-image {
   width: 100%;
   height: auto;
-  max-height: 350px;
-  object-fit: cover;
+  max-width: 100%;
+  object-fit: contain;
   border-radius: 8px;
   margin: 0;
 }

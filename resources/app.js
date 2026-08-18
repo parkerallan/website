@@ -65,35 +65,39 @@ function initFloatingArrow() {
 
 function populateProjects(){
   const projects = [
-    {
-        title: "Gamma Engine",
-        description: [
-            "Raytracing engine aiming for high performance and visual fidelity",
-            "Real-time Vulkan rendering with high-quality lighting and shadows",
-            "TAA (Temporal Anti-Aliasing) for smooth anti-aliasing",
-            "Spatial sound system for immersive audio experience",
-            "Video playback support",
-            "Animation system with skeletal and vertex/ARKit deformation",
-            "Lua scripting and node graph support for flexible development"
-        ],
-        link: "https://github.com/parkerallan",
-        fullWidth: true,
-        videoId: "jNQXAC9IVRw"
-    },
+    // {
+    //     title: "Gamma Engine",
+    //     description: [
+    //         "Raytracing engine aiming for high performance and visual fidelity",
+    //         "Real-time Vulkan rendering with high-quality lighting and shadows",
+    //         "TAA (Temporal Anti-Aliasing) for smooth anti-aliasing",
+    //         "Spatial sound system for immersive audio experience",
+    //         "Video playback support",
+    //         "Animation system with skeletal and vertex/ARKit deformation",
+    //         "Lua scripting and node graph support for flexible development"
+    //     ],
+    //     link: "https://github.com/parkerallan",
+    //     fullWidth: true,
+    //     videoId: "jNQXAC9IVRw"
+    // },
     {
         title: "XenForge Engine",
         description: [
-            "Raytracing engine aiming for high performance and visual fidelity",
-            "Real-time Vulkan rendering with high-quality lighting and shadows",
-            "TAA (Temporal Anti-Aliasing) for smooth anti-aliasing",
-            "Spatial sound system for immersive audio experience",
+            "DirectX9 engine targeting the xbox 360 gaming console",
+            "Rendering pipeline supporting custom hlsl shaders and Principled BSDF",
+            "Intergrated build system for .xex and .iso images",
+            "MSAA post-processing",
+            "Realtime and baked lighting systems",
+            "Spatial sound system",
             "Video playback support",
-            "Animation system with skeletal and vertex/ARKit deformation",
-            "Lua scripting and node graph support for flexible development"
+            "Skeletal animation system",
+            "Facial animation support via Live Link Face for ARKit blendshapes",
+            "Lua scripting for game development"
         ],
-        link: "https://github.com/parkerallan",
+        link: "https://github.com/parkerallan/XenFusion",
         fullWidth: true,
-        videoId: "jNQXAC9IVRw",
+        imgSrc: "resources/images/xenfusion.png",
+        //videoId: "jNQXAC9IVRw",
         reverseLayout: true
     },
     {
@@ -185,13 +189,20 @@ function populateProjects(){
       ? `<ul class="subtext-list">${project.description.map(item => `<li>${item}</li>`).join('')}</ul>`
       : `<p class="subtext">${project.description}</p>`;
     
+    // Determine media type: prioritize imgSrc, then videoId
+    let mediaHtml;
+    if (project.imgSrc) {
+      mediaHtml = `<img class="project-image" src="${project.imgSrc}" alt="${project.title}" loading="lazy">`;
+    } else if (project.videoId) {
+      mediaHtml = `<iframe class="project-video" src="https://www.youtube.com/embed/${project.videoId}" loading="lazy" allowfullscreen></iframe>`;
+    } else {
+      mediaHtml = ''; // No media
+    }
+    
     return `
       <div class="card-full-width${project.reverseLayout ? ' reverse' : ''}">
         <div class="project-image-container">
-          ${project.videoId 
-            ? `<iframe class="project-video" src="https://www.youtube.com/embed/${project.videoId}" loading="lazy" allowfullscreen></iframe>`
-            : `<img class="project-image" src="${project.imgSrc}" alt="${project.title}" loading="lazy">`
-          }
+          ${mediaHtml}
         </div>
         <div class="project-content">
           <div>
