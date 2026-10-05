@@ -101,6 +101,12 @@ function populateProjects(){
         reverseLayout: true
     },
     {
+        imgSrc: "resources/images/doa3.png",
+        title: "Dead or Alive 3",
+        description: "Static recompilation/reverse engineering project for Dead or Alive 3 on Xbox.",
+        link: "https://github.com/parkerallan/doa3-recomp"
+    },
+    {
         imgSrc: "resources/images/starstrike64.png",
         title: "StarStrike 64",
         description: "Nintendo 64 shmup/rails shooter mecha game. Written in C, using LibDragon SDK/Tiny3D.",
@@ -108,15 +114,9 @@ function populateProjects(){
     },
     {
         imgSrc: "resources/images/exporter.png",
-        title: "Playstation 1 Blender Exporter",
+        title: "3D Model Exporter",
         description: "Blender addon that exports models and animation data for PSY-Q or PsyQo PlayStation 1 development",
         link: "https://github.com/parkerallan/PS1-Blender-Exporter"
-    },
-    {
-        imgSrc: "resources/images/albums.png",
-        title: "My Music",
-        description: "House and Trance music I've worked on",
-        link: "https://youtube.com/playlist?list=PLbIqer7yaFcPsQwOmXr_i0f4ITx2gcwjx&feature=shared"
     },
     {
         imgSrc: "resources/images/echo.png",
@@ -127,13 +127,19 @@ function populateProjects(){
 
     {
         imgSrc: "resources/images/data.jpg",
-        title: "Wildfire Predictions",
+        title: "Predict Wildfires",
         description: "Predicting wildfire growth using autoencoder deep learning models. Shoutout Team Deep Green",
         link: "https://github.com/parkerallan/FutureMakers-2022-Team-Deep-Green"
     },
   ];
 
   const hiddenProjects = [
+    {
+        imgSrc: "resources/images/albums.png",
+        title: "My Music",
+        description: "House and Trance music I've worked on",
+        link: "https://youtube.com/playlist?list=PLbIqer7yaFcPsQwOmXr_i0f4ITx2gcwjx&feature=shared"
+    },
     {
       imgSrc: "resources/images/stocks.png",
       title: "Tech Stock Tracker",
